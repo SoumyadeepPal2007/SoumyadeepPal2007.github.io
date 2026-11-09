@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="avatar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="ring-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Glowing outer background circle -->
+  <circle cx="200" cy="200" r="185" fill="none" stroke="url(#bg-grad)" stroke-width="4" stroke-dasharray="8 6" opacity="0.6"/>
+  <circle cx="200" cy="200" r="170" fill="url(#avatar-grad)" stroke="url(#ring-glow)" stroke-width="3" filter="url(#glow)"/>
+
+  <!-- Geometric Tech Pattern in Background -->
+  <g opacity="0.15" stroke="#38bdf8" stroke-width="1.5">
+    <circle cx="200" cy="200" r="130" fill="none"/>
+    <circle cx="200" cy="200" r="90" fill="none" stroke-dasharray="4 4"/>
+    <line x1="70" y1="200" x2="330" y2="200"/>
+    <line x1="200" y1="70" x2="200" y2="330"/>
+  </g>
+
+  <!-- Developer Silhouette / Character Representation -->
+  <!-- Head -->
+  <circle cx="200" cy="150" r="52" fill="#334155" stroke="#818cf8" stroke-width="2"/>
+  <!-- Modern Hair -->
+  <path d="M152 145 C152 105, 175 90, 200 90 C228 90, 248 105, 248 145 C240 125, 220 120, 200 120 C175 120, 160 130, 152 145 Z" fill="#6366f1"/>
+  <!-- Glasses / Developer Specs -->
+  <rect x="168" y="142" width="26" height="18" rx="4" fill="none" stroke="#38bdf8" stroke-width="3"/>
+  <rect x="206" y="142" width="26" height="18" rx="4" fill="none" stroke="#38bdf8" stroke-width="3"/>
+  <line x1="194" y1="151" x2="206" y2="151" stroke="#38bdf8" stroke-width="3"/>
+  <path d="M168 151 L156 146" stroke="#38bdf8" stroke-width="2"/>
+  <path d="M232 151 L244 146" stroke="#38bdf8" stroke-width="2"/>
+  
+  <!-- Subtle Smile -->
+  <path d="M190 178 Q200 186 210 178" fill="none" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Body / Hoodie / Shoulders -->
+  <path d="M110 320 C110 240, 145 225, 170 220 L180 250 L220 250 L230 220 C255 225, 290 240, 290 320 Z" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
+  <!-- Inner shirt collar -->
+  <polygon points="180,220 200,255 220,220 200,228" fill="#38bdf8" opacity="0.8"/>
+
+  <!-- Code / Tech Badges Floating -->
+  <g transform="translate(65, 130)">
+    <rect width="44" height="26" rx="6" fill="#0f172a" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="22" y="17" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle">&lt;/&gt;</text>
+  </g>
+
+  <g transform="translate(290, 130)">
+    <rect width="44" height="26" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <text x="22" y="17" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">{ IT }</text>
+  </g>
+
+  <!-- Monogram Initials Tag at Bottom -->
+  <g transform="translate(150, 310)">
+    <rect width="100" height="32" rx="16" fill="#0f172a" stroke="url(#ring-glow)" stroke-width="2"/>
+    <text x="50" y="21" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" text-anchor="middle">SOUMYADEEP</text>
+  </g>
+</svg>
+

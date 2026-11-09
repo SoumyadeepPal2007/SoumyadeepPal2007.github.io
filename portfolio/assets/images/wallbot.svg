@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wb-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="paint-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="360" fill="url(#wb-grad)"/>
+  <rect width="600" height="360" fill="url(#grid)"/>
+
+  <!-- Wall Surface & Measurement Grid lines -->
+  <line x1="80" y1="40" x2="80" y2="320" stroke="rgba(56, 189, 248, 0.2)" stroke-dasharray="4 4"/>
+  <line x1="520" y1="40" x2="520" y2="320" stroke="rgba(56, 189, 248, 0.2)" stroke-dasharray="4 4"/>
+
+  <!-- Painted Stroke on Wall -->
+  <path d="M 120 180 Q 240 100 380 140 T 500 120" fill="none" stroke="url(#paint-grad)" stroke-width="18" stroke-linecap="round" opacity="0.85"/>
+  <path d="M 140 220 Q 260 160 360 210 T 480 180" fill="none" stroke="url(#laser-grad)" stroke-width="14" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- WallBot Robot Chassis -->
+  <g transform="translate(250, 110)">
+    <!-- Shadow -->
+    <rect x="-10" y="8" width="140" height="110" rx="18" fill="#030712" opacity="0.6" filter="blur(6px)"/>
+    <!-- Main Body -->
+    <rect x="0" y="0" width="120" height="100" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <rect x="12" y="12" width="96" height="76" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <!-- Pneumatic / Suction Tracks (Climbing mechanism) -->
+    <!-- Left Track -->
+    <rect x="-18" y="10" width="16" height="80" rx="6" fill="#334155" stroke="#6366f1" stroke-width="1.5"/>
+    <line x1="-18" y1="25" x2="-2" y2="25" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="-18" y1="45" x2="-2" y2="45" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="-18" y1="65" x2="-2" y2="65" stroke="#38bdf8" stroke-width="2"/>
+    <!-- Right Track -->
+    <rect x="122" y="10" width="16" height="80" rx="6" fill="#334155" stroke="#6366f1" stroke-width="1.5"/>
+    <line x1="122" y1="25" x2="138" y2="25" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="122" y1="45" x2="138" y2="45" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="122" y1="65" x2="138" y2="65" stroke="#38bdf8" stroke-width="2"/>
+
+    <!-- Spray Nozzle Arm -->
+    <path d="M 60 100 L 60 125 L 85 135" fill="none" stroke="#f43f5e" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="85" cy="135" r="5" fill="#f43f5e"/>
+    <!-- Spray particle cone -->
+    <polygon points="85,135 140,120 145,155" fill="url(#paint-grad)" opacity="0.45"/>
+
+    <!-- Status Indicators & Sensors -->
+    <circle cx="35" cy="35" r="7" fill="#10b981"/>
+    <circle cx="35" cy="35" r="3" fill="#ffffff"/>
+    <circle cx="60" cy="35" r="7" fill="#38bdf8"/>
+    <circle cx="60" cy="35" r="3" fill="#ffffff"/>
+    <circle cx="85" cy="35" r="7" fill="#8b5cf6"/>
+    <circle cx="85" cy="35" r="3" fill="#ffffff"/>
+
+    <!-- Microcontroller / Core Display -->
+    <rect x="25" y="55" width="70" height="22" rx="4" fill="#030712" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1"/>
+    <text x="60" y="70" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" font-weight="bold">WALL-BOT v2.4</text>
+  </g>
+
+  <!-- Tag badge -->
+  <g transform="translate(30, 30)">
+    <rect width="115" height="28" rx="6" fill="rgba(30, 41, 59, 0.8)" stroke="#818cf8" stroke-width="1.2"/>
+    <text x="57" y="19" fill="#c7d2fe" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" text-anchor="middle">Robotics &amp; IoT</text>
+  </g>
+</svg>
+

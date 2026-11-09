@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sf-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090f1d" />
+      <stop offset="100%" stop-color="#0f2b38" />
+    </linearGradient>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="360" fill="url(#sf-bg)"/>
+
+  <!-- Dashboard Frame -->
+  <g transform="translate(45, 35)">
+    <rect width="510" height="290" rx="12" fill="#0b1329" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1.5"/>
+
+    <!-- Header -->
+    <rect width="510" height="36" rx="12" fill="#0f1d38"/>
+    <text x="25" y="23" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">INDUSTRY 4.0 // SMART FACTORY TELEMETRY</text>
+    <circle cx="475" cy="18" r="5" fill="#10b981"/>
+    <text x="440" y="22" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="9">ONLINE</text>
+
+    <!-- Gauges / Circular Metrics -->
+    <!-- Gauge 1: Machine Efficiency -->
+    <g transform="translate(40, 60)">
+      <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+      <circle cx="45" cy="45" r="35" fill="none" stroke="url(#cyan-glow)" stroke-width="6" stroke-dasharray="190" stroke-dashoffset="40" stroke-linecap="round"/>
+      <text x="45" y="44" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">92.4%</text>
+      <text x="45" y="58" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" text-anchor="middle">OEE Rating</text>
+    </g>
+
+    <!-- Gauge 2: Sensor Health -->
+    <g transform="translate(150, 60)">
+      <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+      <circle cx="45" cy="45" r="35" fill="none" stroke="#3b82f6" stroke-width="6" stroke-dasharray="190" stroke-dashoffset="20" stroke-linecap="round"/>
+      <text x="45" y="44" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">98.9%</text>
+      <text x="45" y="58" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" text-anchor="middle">Sensor Uptime</text>
+    </g>
+
+    <!-- Gauge 3: Temperature / Load -->
+    <g transform="translate(260, 60)">
+      <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+      <circle cx="45" cy="45" r="35" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="190" stroke-dashoffset="95" stroke-linecap="round"/>
+      <text x="45" y="44" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">48.2°C</text>
+      <text x="45" y="58" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" text-anchor="middle">Core Temp</text>
+    </g>
+
+    <!-- Assembly Line Status Card -->
+    <rect x="365" y="55" width="120" height="90" rx="8" fill="#142442" stroke="rgba(6, 182, 212, 0.2)"/>
+    <text x="375" y="74" fill="#38bdf8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="bold">LINE STATUS</text>
+    <text x="375" y="93" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Unit Alpha: RUN</text>
+    <text x="375" y="110" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Unit Beta: RUN</text>
+    <text x="375" y="127" fill="#f59e0b" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Unit Gamma: IDLE</text>
+
+    <!-- Oscilloscope / Telemetry Waveform -->
+    <rect x="25" y="165" width="460" height="105" rx="8" fill="#071124" stroke="rgba(255,255,255,0.06)"/>
+    <text x="40" y="185" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9">REALTIME VIBRATION &amp; CURRENT SPECTRUM</text>
+
+    <!-- Grid lines -->
+    <line x1="25" y1="210" x2="485" y2="210" stroke="rgba(255,255,255,0.04)"/>
+    <line x1="25" y1="235" x2="485" y2="235" stroke="rgba(255,255,255,0.04)"/>
+
+    <!-- Waveform paths -->
+    <path d="M 40 220 L 70 215 L 90 235 L 110 190 L 130 225 L 160 210 L 190 240 L 220 180 L 250 220 L 280 205 L 310 235 L 340 185 L 370 215 L 400 210 L 440 225 L 470 215" fill="none" stroke="#06b6d4" stroke-width="2.5"/>
+    <path d="M 40 225 L 70 230 L 100 205 L 140 240 L 180 210 L 230 235 L 270 195 L 320 225 L 380 200 L 430 230 L 470 220" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3"/>
+  </g>
+</svg>
+
