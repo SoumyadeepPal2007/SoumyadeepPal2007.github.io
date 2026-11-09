@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cs-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f291e" />
+      <stop offset="60%" stop-color="#143c2c" />
+      <stop offset="100%" stop-color="#0b1b2b" />
+    </linearGradient>
+    <linearGradient id="leaf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="ai-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <pattern id="crop-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(52, 211, 153, 0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="360" fill="url(#cs-bg)"/>
+  <rect width="600" height="360" fill="url(#crop-grid)"/>
+
+  <!-- Glowing Radar / Field Sensor Rings -->
+  <circle cx="180" cy="180" r="140" fill="none" stroke="rgba(52, 211, 153, 0.12)" stroke-width="1.5"/>
+  <circle cx="180" cy="180" r="100" fill="none" stroke="rgba(56, 189, 248, 0.15)" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <circle cx="180" cy="180" r="60" fill="none" stroke="rgba(52, 211, 153, 0.2)" stroke-width="1.5"/>
+
+  <!-- Scanning Sensor Beam Line -->
+  <line x1="180" y1="180" x2="280" y2="80" stroke="url(#ai-glow)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Stylized AI Plant / Crop Sprout -->
+  <g transform="translate(180, 180)">
+    <!-- Soil Base Line -->
+    <path d="M -80 70 Q 0 65 80 70" stroke="#059669" stroke-width="3" fill="none"/>
+    <path d="M 0 70 L 0 -20" stroke="url(#leaf-grad)" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Left Leaf -->
+    <path d="M 0 30 C -40 20, -55 -10, -10 -15 C -5 5, -2 20, 0 30 Z" fill="url(#leaf-grad)" opacity="0.9"/>
+    <!-- Right Leaf -->
+    <path d="M 0 10 C 40 0, 55 -30, 10 -35 C 5 -15, 2 0, 0 10 Z" fill="url(#leaf-grad)" opacity="0.95"/>
+    <!-- Top Sprout -->
+    <path d="M 0 -20 C -25 -40, -15 -70, 0 -75 C 15 -70, 25 -40, 0 -20 Z" fill="url(#leaf-grad)"/>
+
+    <!-- Neural AI Nodes on Plant -->
+    <circle cx="0" cy="-75" r="5" fill="#38bdf8"/>
+    <circle cx="-10" cy="-15" r="4" fill="#34d399"/>
+    <circle cx="10" cy="-35" r="4" fill="#34d399"/>
+    <line x1="0" y1="-75" x2="-10" y2="-15" stroke="rgba(56, 189, 248, 0.5)" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <line x1="0" y1="-75" x2="10" y2="-35" stroke="rgba(56, 189, 248, 0.5)" stroke-width="1.5" stroke-dasharray="3 3"/>
+  </g>
+
+  <!-- Right Side: AI Analytics & Prediction Dashboard Card -->
+  <g transform="translate(340, 45)">
+    <!-- Card Frame -->
+    <rect width="225" height="270" rx="12" fill="rgba(15, 30, 40, 0.85)" stroke="rgba(52, 211, 153, 0.35)" stroke-width="1.5"/>
+    
+    <!-- Header -->
+    <rect width="225" height="34" rx="12" fill="#0d241c"/>
+    <text x="16" y="22" fill="#34d399" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="bold">CROPSENSE AI ENGINE</text>
+    <circle cx="205" cy="17" r="4" fill="#10b981"/>
+
+    <!-- Telemetry 1: Crop Health Index -->
+    <g transform="translate(16, 50)">
+      <text x="0" y="10" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">CROP HEALTH INDEX</text>
+      <text x="0" y="28" fill="#f8fafc" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="bold">94.8% Optimal</text>
+      <rect x="0" y="36" width="193" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+      <rect x="0" y="36" width="180" height="6" rx="3" fill="url(#leaf-grad)"/>
+    </g>
+
+    <!-- Telemetry 2: Soil Moisture & Nutrients -->
+    <g transform="translate(16, 110)">
+      <text x="0" y="10" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">SOIL MOISTURE / N-P-K</text>
+      <text x="0" y="28" fill="#38bdf8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="bold">68% • Balanced</text>
+      <rect x="0" y="36" width="193" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+      <rect x="0" y="36" width="130" height="6" rx="3" fill="#38bdf8"/>
+    </g>
+
+    <!-- Telemetry 3: AI Diagnosis & Insights -->
+    <g transform="translate(16, 170)">
+      <rect width="193" height="75" rx="8" fill="rgba(5, 150, 105, 0.12)" stroke="rgba(52, 211, 153, 0.25)"/>
+      <text x="12" y="20" fill="#34d399" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold">AI Insights &amp; Recommendation</text>
+      <text x="12" y="38" fill="#cbd5e1" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5">✓ No disease symptoms detected</text>
+      <text x="12" y="52" fill="#cbd5e1" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5">✓ Irrigation scheduled: 06:00 AM</text>
+      <text x="12" y="66" fill="#38bdf8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5">→ Yield projection: +18.4%</text>
+    </g>
+  </g>
+
+  <!-- Tag Pill -->
+  <g transform="translate(30, 25)">
+    <rect width="135" height="26" rx="13" fill="rgba(6, 78, 59, 0.85)" stroke="#34d399" stroke-width="1.2"/>
+    <text x="67" y="17" fill="#6ee7b7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">AI in Agriculture</text>
+  </g>
+</svg>
+
