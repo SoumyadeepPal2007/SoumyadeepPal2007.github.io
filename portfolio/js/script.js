@@ -458,7 +458,7 @@ function cmdAbout() {
     `  Soumyadeep Pal | B.Tech IT Student @ IEM Kolkata\n` +
     `  Languages  : C, C++, Java, Python\n` +
     `  Interests  : DSA, Artificial Intelligence & Machine Learning\n` +
-    `  Year       : 2nd Year (Batch 2027)\n` +
+    `  Year       : Second Year (Batch 2025–2029)\n` +
     `  Location   : Kolkata, West Bengal, India`,
     'terminal-output-block'
   );
@@ -497,7 +497,7 @@ function cmdEducation() {
     `<span class="term-section">EDUCATION</span>\n` +
     `  <span class="term-keyword">Degree   :</span> B.Tech — Information Technology\n` +
     `  <span class="term-keyword">Institute:</span> Institute of Engineering & Management (IEM), Kolkata\n` +
-    `  <span class="term-keyword">Year     :</span> 2nd Year | Batch 2027\n` +
+    `  <span class="term-keyword">Year     :</span> Second Year | Batch 2025–2029\n` +
     `  <span class="term-keyword">Subjects :</span> DSA, DBMS, OS, COA, OOP, Discrete Math`,
     'terminal-output-block'
   );
@@ -1434,184 +1434,12 @@ function generateQrMatrix(text) {
 }
 
 function downloadBusinessCard() {
-  const W = 1050, H = 600;
-  const canvas = document.createElement('canvas');
-  canvas.width = W;
-  canvas.height = H;
-  const ctx = canvas.getContext('2d');
-
-  /* ---- Deep Navy Blue Gradient Background ---- */
-  const bgGrad = ctx.createLinearGradient(0, 0, W, H);
-  bgGrad.addColorStop(0, '#060d1b');
-  bgGrad.addColorStop(0.5, '#0b162c');
-  bgGrad.addColorStop(1, '#081224');
-  ctx.fillStyle = bgGrad;
-  ctx.fillRect(0, 0, W, H);
-
-  /* ---- Golden & Red Accent Borders ---- */
-  ctx.strokeStyle = '#d4af37';
-  ctx.lineWidth = 3;
-  roundRect(ctx, 16, 16, W - 32, H - 32, 16);
-  ctx.stroke();
-
-  // Subtle red corner tints on top-right and bottom-left
-  ctx.strokeStyle = 'rgba(220, 38, 38, 0.75)';
-  ctx.lineWidth = 4;
-  ctx.beginPath();
-  ctx.moveTo(W - 90, 16);
-  ctx.lineTo(W - 32, 16);
-  ctx.lineTo(W - 16, 32);
-  ctx.lineTo(W - 16, 90);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.moveTo(16, H - 90);
-  ctx.lineTo(16, H - 32);
-  ctx.lineTo(32, H - 16);
-  ctx.lineTo(90, H - 16);
-  ctx.stroke();
-
-  /* ---- SP Monogram Emblem ---- */
-  const monoX = 110, monoY = 145;
-  const monoR = 60;
-  const monoGrad = ctx.createRadialGradient(monoX, monoY - 10, 5, monoX, monoY, monoR);
-  monoGrad.addColorStop(0, '#1d4ed8');
-  monoGrad.addColorStop(1, '#060d1b');
-  ctx.beginPath();
-  ctx.arc(monoX, monoY, monoR, 0, Math.PI * 2);
-  ctx.fillStyle = monoGrad;
-  ctx.fill();
-  ctx.strokeStyle = '#d4af37';
-  ctx.lineWidth = 2.5;
-  ctx.stroke();
-
-  ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 44px Georgia, serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('SP', monoX, monoY);
-
-  /* ---- Main Typography ---- */
-  const textX = 205;
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'alphabetic';
-
-  // Name
-  ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 40px Arial, sans-serif';
-  ctx.fillText('Soumyadeep Pal', textX, 130);
-
-  // Subtitle / Role
-  ctx.fillStyle = '#e5c158';
-  ctx.font = 'bold 18px Arial, sans-serif';
-  ctx.fillText('B.Tech IT Student  •  Aspiring Software Developer  •  AI & ML Enthusiast', textX, 166);
-
-  // Institution
-  ctx.fillStyle = '#cbd5e1';
-  ctx.font = '16px Arial, sans-serif';
-  ctx.fillText('Institute of Engineering and Management (IEM), Kolkata', textX, 196);
-
-  // Golden accent divider
-  const divGrad = ctx.createLinearGradient(textX, 0, W - 320, 0);
-  divGrad.addColorStop(0, '#d4af37');
-  divGrad.addColorStop(0.8, 'rgba(212, 175, 55, 0.4)');
-  divGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
-  ctx.strokeStyle = divGrad;
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.moveTo(textX, 216);
-  ctx.lineTo(W - 320, 216);
-  ctx.stroke();
-
-  // Contact Details
-  const detailsY = 265;
-  const lineH = 38;
-  const details = [
-    { icon: '✉', label: 'soumyadeepp269@gmail.com' },
-    { icon: '⌥', label: 'github.com/SoumyadeepPal2007' },
-    { icon: '⬡', label: 'linkedin.com/in/soumyadeep-pal-885140361' },
-    { icon: '▶', label: 'youtube.com/@soumyadeeppal7733' }
-  ];
-
-  details.forEach((item, i) => {
-    const y = detailsY + i * lineH;
-    ctx.fillStyle = '#e5c158';
-    ctx.font = 'bold 17px Arial, sans-serif';
-    ctx.fillText(item.icon, textX, y);
-
-    ctx.fillStyle = '#f8fafc';
-    ctx.font = '16px Arial, sans-serif';
-    ctx.fillText(item.label, textX + 26, y);
-  });
-
-  /* ---- Skills Strip at Bottom ---- */
-  const skills = ['C', 'C++', 'Java', 'Python', 'DSA', 'AI & ML', 'Prompt Engineering', 'MySQL'];
-  const skillsY = H - 55;
-  let tagX = textX;
-  ctx.font = '13px Arial, sans-serif';
-  skills.forEach(skill => {
-    const tw = ctx.measureText(skill).width + 18;
-    ctx.fillStyle = 'rgba(212, 175, 55, 0.12)';
-    ctx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
-    ctx.lineWidth = 1;
-    roundRect(ctx, tagX, skillsY - 18, tw, 26, 6);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = '#e5c158';
-    ctx.fillText(skill, tagX + 9, skillsY);
-    tagX += tw + 8;
-  });
-
-  /* ---- Genuine Scannable QR Code on Right Side ---- */
-  const qrBoxX = W - 280, qrBoxY = 110, qrBoxS = 220;
-
-  // Outer container box with white background for maximum contrast & scannability
-  ctx.fillStyle = '#ffffff';
-  roundRect(ctx, qrBoxX, qrBoxY, qrBoxS, qrBoxS, 12);
-  ctx.fill();
-  ctx.strokeStyle = '#d4af37';
-  ctx.lineWidth = 2.5;
-  ctx.stroke();
-
-  // Generate and draw QR matrix
-  const qrUrl = 'https://soumyadeeppal2007.github.io/';
-  const qrMatrix = generateQrMatrix(qrUrl);
-  const qrPadding = 18;
-  const qrInnerSize = qrBoxS - qrPadding * 2;
-  const cellSize = qrInnerSize / qrMatrix.length;
-
-  ctx.fillStyle = '#060d1b';
-  for (let r = 0; r < qrMatrix.length; r++) {
-    for (let c = 0; c < qrMatrix.length; c++) {
-      if (qrMatrix[r][c] === 1) {
-        ctx.fillRect(
-          qrBoxX + qrPadding + c * cellSize,
-          qrBoxY + qrPadding + r * cellSize,
-          cellSize + 0.5,
-          cellSize + 0.5
-        );
-      }
-    }
-  }
-
-  // QR Label below box
-  ctx.fillStyle = '#e5c158';
-  ctx.font = 'bold 13px Arial, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('SCAN TO VISIT PORTFOLIO', qrBoxX + qrBoxS / 2, qrBoxY + qrBoxS + 30);
-
-  /* ---- Export to PNG & Download ---- */
-  canvas.toBlob(blob => {
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Soumyadeep_Pal_Business_Card.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
-  }, 'image/png');
+  const link = document.createElement('a');
+  link.href = 'assets/images/business_card.jpg';
+  link.download = 'Soumyadeep_Pal_Business_Card.jpg';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 /** Helper: draw a rounded rectangle path */

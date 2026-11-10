@@ -11,7 +11,7 @@ My goal is to leverage cutting-edge technology to solve real-world problems and 
 
 - **Bachelor of Technology (B.Tech)**, Information Technology
   - *Institute of Engineering and Management (IEM)*, Kolkata
-  - *Expected Graduation*: 2027
+  - *Batch*: 2025–2029 (Currently: Second Year)
 - **Higher Secondary School Certificate (HSC)**
   - *Higher Secondary Board Examination*
   - *Year*: 2025
