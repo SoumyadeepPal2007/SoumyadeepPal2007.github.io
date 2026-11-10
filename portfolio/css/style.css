@@ -748,10 +748,10 @@ section {
 .avatar-frame {
   position: relative;
   z-index: 1;
-  width: 320px;
-  height: 380px;
+  width: 270px;
+  height: 320px;
   max-width: 100%;
-  border-radius: 26px;
+  border-radius: 22px;
   padding: 6px;
   background: var(--bg-card);
   border: 2px solid var(--border-highlight);
@@ -771,7 +771,7 @@ section {
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
-  border-radius: 20px;
+  border-radius: 16px;
   background: var(--bg-surface);
   transition: transform var(--transition-normal);
 }
