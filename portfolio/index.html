@@ -20,8 +20,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- External Stylesheet -->
+  <!-- External Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-extension.css">
 </head>
 <body>
 
@@ -33,16 +34,16 @@
   </div>
 
   <!-- ======================================================================
-       NAVIGATION BAR
+       FLOATING TOP NAVIGATION DOCK (Apple-inspired blurred glass dock)
        ====================================================================== -->
-  <header class="navbar" id="navbar">
-    <div class="container nav-container">
+  <header class="navbar" id="navbar" role="banner">
+    <div class="nav-container">
       <!-- Monogram / Brand -->
       <a href="#home" class="nav-brand" aria-label="Soumyadeep Pal Portfolio Home">
         <div class="brand-monogram">SP</div>
         <div class="brand-text">
           <span class="brand-name">Soumyadeep Pal</span>
-          <span class="brand-role">B.Tech IT Student | Developer</span>
+          <span class="brand-role">B.Tech IT &bull; Developer</span>
         </div>
       </a>
 
@@ -51,18 +52,26 @@
         <a href="#home" class="nav-link active">Home</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#skills" class="nav-link">Skills</a>
-        <a href="#ai-tools" class="nav-link">AI Tools</a>
+        <a href="#roadmap" class="nav-link">Roadmap</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#achievements" class="nav-link">Achievements</a>
         <a href="#education" class="nav-link">Education</a>
-        <a href="#documents" class="nav-link">Documents</a>
+        <a href="#ai-tools" class="nav-link">AI &amp; Technology</a>
         <a href="#contact" class="nav-link">Contact</a>
+        <a href="#documents" class="nav-link">Documents</a>
       </nav>
 
-      <!-- Action Buttons: Theme Toggle & Mobile Menu -->
+      <!-- Action Buttons: Three Mode Selector, Theme Toggle & Mobile Menu -->
       <div class="nav-actions">
-        <!-- Theme Toggle Button -->
-        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
+        <!-- Three-Mode Segmented Selector -->
+        <div class="mode-switcher" role="group" aria-label="Website Mode Selector">
+          <button type="button" class="mode-btn active" data-mode="normal" title="Normal Portfolio Mode">Normal</button>
+          <button type="button" class="mode-btn" data-mode="terminal" title="Terminal CLI Mode">Terminal</button>
+          <button type="button" class="mode-btn" data-mode="recruiter" title="Recruiter Focused Mode">Recruiter</button>
+        </div>
+
+        <!-- Theme Toggle Button (Dark / Light) -->
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle Dark/Light Mode">
           <!-- Sun Icon (shown in light mode) -->
           <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
@@ -82,7 +91,7 @@
         </button>
 
         <!-- Mobile Hamburger Toggle Button -->
-        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <button type="button" class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -91,1208 +100,1598 @@
     </div>
   </header>
 
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
   <main>
-    <!-- ====================================================================
-         SECTION 1: HOME (HERO)
-         ==================================================================== -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-grid">
-          <!-- Left Column: Introduction & CTAs -->
-          <div class="hero-content reveal">
-            <!-- Availability status pill -->
-            <div class="hero-status-pill">
-              <span class="status-dot"></span>
-              <span>Open to Internships &amp; Collaborations</span>
+
+    <!-- ==================================================================
+         MODE 1: NORMAL MODE (Default Comprehensive Portfolio)
+         ================================================================== -->
+    <div id="normal-mode" class="mode-container active">
+
+      <!-- SECTION 1: HOME (HERO) -->
+      <section class="hero" id="home">
+        <div class="container">
+          <div class="hero-grid">
+            <!-- Left Column: Introduction & CTAs -->
+            <div class="hero-content reveal">
+              <!-- Availability status pill -->
+              <div class="hero-status-pill">
+                <span class="status-dot"></span>
+                <span>Open to Internships &amp; Collaborations</span>
+              </div>
+
+              <!-- Animated Name Greeting -->
+              <h1 class="hero-title name-greeting" id="hero-greeting">
+                Hello, I'm <span class="gradient-text name-highlight" id="hero-name-animated">Soumyadeep Pal</span><span class="typing-cursor" aria-hidden="true"></span>
+              </h1>
+
+              <p class="hero-subtitle">
+                B.Tech IT Student | Aspiring Software Developer | AI &amp; ML Enthusiast
+              </p>
+
+              <p class="hero-bio">
+                Second-year Information Technology undergraduate at <strong>Institute of Engineering and Management (IEM), Kolkata</strong>. 
+                Focused on core programming in C, C++, Java, and Python, mastering Data Structures &amp; Algorithms using C++, 
+                and actively learning Artificial Intelligence, Machine Learning, and Prompt Engineering.
+              </p>
+
+              <!-- Hero Action Buttons -->
+              <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                  <span>Explore My Work</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+
+                <a href="assets/documents/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="view-resume-btn">
+                  <span>View My Resume</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+
+                <a href="assets/documents/resume.pdf" download="Soumyadeep_Pal_Resume.pdf" class="btn-icon-download" title="Download Resume PDF" aria-label="Download Soumyadeep Pal's Resume">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </a>
+
+                <!-- Download Business Card Button -->
+                <button type="button" class="btn btn-business-card" onclick="downloadBusinessCard()" title="Download Digital Business Card (PNG)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                  </svg>
+                  <span>Business Card</span>
+                </button>
+
+                <a href="#contact" class="btn btn-secondary">
+                  <span>Contact Me</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Quick Social Presence -->
+              <div class="hero-socials">
+                <span class="social-label">Connect:</span>
+                <div class="social-links-row">
+                  <a href="https://github.com/SoumyadeepPal2007" target="_blank" rel="noopener noreferrer" class="social-link-badge" aria-label="GitHub Profile">
+                    <img src="assets/icons/github.svg" alt="" width="18" height="18" class="social-icon-svg">
+                    <span>GitHub</span>
+                  </a>
+                  <a href="https://www.linkedin.com/in/soumyadeep-pal-885140361/" target="_blank" rel="noopener noreferrer" class="social-link-badge" aria-label="LinkedIn Profile">
+                    <img src="assets/icons/linkedin.svg" alt="" width="18" height="18" class="social-icon-svg">
+                    <span>LinkedIn</span>
+                  </a>
+                  <a href="https://youtube.com/@soumyadeeppal7733" target="_blank" rel="noopener noreferrer" class="social-link-badge" aria-label="YouTube Channel">
+                    <img src="assets/icons/youtube.svg" alt="" width="18" height="18" class="social-icon-svg">
+                    <span>YouTube</span>
+                  </a>
+                  <button type="button" class="social-link-badge" data-copy-text="soumyadeepp269@gmail.com" aria-label="Copy email address" title="Click to copy email">
+                    <img src="assets/icons/mail.svg" alt="" width="18" height="18" class="social-icon-svg">
+                    <span>Email</span>
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <h1 class="hero-title">
-              Hi, I'm <span class="gradient-text">Soumyadeep Pal</span>
-            </h1>
+            <!-- Right Column: Profile Picture Card -->
+            <div class="hero-visual reveal">
+              <div class="profile-card-wrapper">
+                <div class="profile-card-glow"></div>
+                <div class="profile-card">
+                  <div class="profile-image-container">
+                    <img src="assets/images/profile.jpg" alt="Soumyadeep Pal - Profile Photograph" class="profile-photo" onerror="this.onerror=null; this.src='assets/images/profile-placeholder.svg';" loading="eager">
+                  </div>
+                  <div class="profile-card-footer">
+                    <div class="profile-meta">
+                      <span class="meta-label">Affiliation</span>
+                      <span class="meta-value">IEM Kolkata &bull; IT</span>
+                    </div>
+                    <div class="profile-meta">
+                      <span class="meta-label">Focus</span>
+                      <span class="meta-value">Software &amp; AI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <p class="hero-subtitle">
-              B.Tech IT Student | Aspiring Software Developer | AI &amp; ML Enthusiast
+      <!-- SECTION 2: ABOUT -->
+      <section class="about section-alt" id="about">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Get To Know Me</div>
+            <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+            <p class="section-description">
+              A professional overview of my academic foundation, programming proficiencies, and technical pursuits.
             </p>
+          </div>
 
-            <p class="hero-bio">
-              Second-year Information Technology undergraduate at <strong>Institute of Engineering and Management (IEM), Kolkata</strong>. 
-              Focused on core programming in C, C++, Java, and Python, mastering Data Structures &amp; Algorithms using C++, 
-              and actively learning Artificial Intelligence, Machine Learning, and Prompt Engineering.
+          <div class="about-grid">
+            <!-- About Narrative Card -->
+            <div class="about-card reveal">
+              <div class="about-text">
+                <p>
+                  Hello! I am <strong>Soumyadeep Pal</strong>, a <strong>second-year Bachelor of Technology (B.Tech) student in Information Technology</strong> at the <strong>Institute of Engineering and Management (IEM), Kolkata</strong>. 
+                  My focus centers on structured programming, software engineering, and solving real-world computational challenges.
+                </p>
+                <p>
+                  My core programming capabilities span <strong>C, C++, Java, and Python</strong>. 
+                  I am deeply invested in sharpening my algorithmic thinking through <strong>Data Structures and Algorithms using C++</strong>, 
+                  striving to write clean, maintainable, and computationally optimal code.
+                </p>
+                <p>
+                  Fascinated by predictive technology and intelligent automation, I am actively learning <strong>Artificial Intelligence (AI)</strong>, <strong>Machine Learning (ML)</strong>, and <strong>Prompt Engineering</strong>. 
+                  Whether collaborating in competitive hackathons, mastering coursework, or building software systems, I bring discipline, technical curiosity, and an eagerness to create meaningful technological solutions.
+                </p>
+              </div>
+            </div>
+
+            <!-- Highlight Cards -->
+            <div class="about-highlights reveal">
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <h3 class="highlight-title">Second-Year B.Tech IT</h3>
+                <p class="highlight-desc">
+                  Enrolled at IEM Kolkata with deep engagement in computer systems, object-oriented principles, and databases.
+                </p>
+              </div>
+
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <h3 class="highlight-title">Core Programming</h3>
+                <p class="highlight-desc">
+                  Writing robust and structured code in C, C++, Java, and Python for foundational and modern applications.
+                </p>
+              </div>
+
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="3" x2="6" y2="15"></line>
+                    <circle cx="18" cy="6" r="3"></circle>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <path d="M18 9a9 9 0 0 1-9 9"></path>
+                  </svg>
+                </div>
+                <h3 class="highlight-title">DSA using C++</h3>
+                <p class="highlight-desc">
+                  Actively learning and implementing Data Structures and Algorithms with a focus on optimal complexity.
+                </p>
+              </div>
+
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"></path>
+                    <path d="M18 10a6 6 0 0 1 4 6v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a6 6 0 0 1 4-6"></path>
+                    <circle cx="12" cy="14" r="2"></circle>
+                  </svg>
+                </div>
+                <h3 class="highlight-title">AI &amp; Machine Learning</h3>
+                <p class="highlight-desc">
+                  Exploring artificial intelligence paradigms, predictive modeling techniques, and machine learning algorithms.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: SKILLS -->
+      <section class="skills" id="skills">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Core Competencies</div>
+            <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+            <p class="section-description">
+              Programming languages, technologies, and tools I use, alongside areas of dedicated ongoing study.
             </p>
-
-            <!-- Hero Action Buttons -->
-            <div class="hero-actions">
-              <a href="#projects" class="btn btn-primary">
-                <span>Explore My Work</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-
-              <a href="assets/documents/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="view-resume-btn">
-                <span>View My Resume</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-
-              <a href="assets/documents/resume.pdf" download="Soumyadeep_Pal_Resume.pdf" class="btn-icon-download" title="Download Resume PDF" aria-label="Download Soumyadeep Pal's Resume">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-              </a>
-
-              <a href="#contact" class="btn btn-secondary">
-                <span>Contact Me</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </a>
-            </div>
-
-            <!-- Quick Social Presence -->
-            <div class="hero-socials">
-              <span class="hero-socials-label">Connect:</span>
-              <a href="https://github.com/SoumyadeepPal2007" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Soumyadeep's GitHub Profile" title="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-              </a>
-
-              <a href="https://www.linkedin.com/in/soumyadeep-pal-885140361/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Soumyadeep's LinkedIn Profile" title="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </a>
-
-              <a href="https://youtube.com/@soumyadeeppal7733" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Soumyadeep's YouTube Channel" title="YouTube">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-                </svg>
-              </a>
-
-              <a href="mailto:soumyadeepp269@gmail.com" class="social-icon-link" aria-label="Email Soumyadeep Pal" title="Send Email">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </a>
-            </div>
           </div>
 
-          <!-- Right Column: Profile Photograph & Floating Badges -->
-          <div class="hero-avatar-wrapper reveal">
-            <div class="avatar-backdrop-glow"></div>
-            
-            <div class="avatar-frame">
-              <img src="assets/images/profile.jpg" alt="Soumyadeep Pal - Profile Photograph" class="avatar-image">
+          <div class="skills-grid">
+            <!-- Category 1: Programming Languages -->
+            <div class="skill-card reveal">
+              <div class="skill-card-header">
+                <div class="skill-category-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <h3 class="skill-category-title">Programming Languages</h3>
+              </div>
+              <div class="skill-badges-list">
+                <div class="skill-pill">
+                  <span>C</span>
+                  <span class="skill-pill-code">.c</span>
+                </div>
+                <div class="skill-pill">
+                  <span>C++</span>
+                  <span class="skill-pill-code">.cpp</span>
+                </div>
+                <div class="skill-pill">
+                  <span>Java</span>
+                  <span class="skill-pill-code">.java</span>
+                </div>
+                <div class="skill-pill">
+                  <span>Python</span>
+                  <span class="skill-pill-code">.py</span>
+                </div>
+              </div>
             </div>
 
-            <!-- Floating Micro Badges -->
-            <div class="floating-badge badge-1">
-              <span class="badge-icon">🎓</span>
-              <span>2nd Year IT @ IEM</span>
+            <!-- Category 2: Web Technologies -->
+            <div class="skill-card reveal">
+              <div class="skill-card-header">
+                <div class="skill-category-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                </div>
+                <h3 class="skill-category-title">Web Technologies</h3>
+              </div>
+              <div class="skill-badges-list">
+                <div class="skill-pill">
+                  <span>HTML</span>
+                  <span class="skill-pill-code">HTML5</span>
+                </div>
+                <div class="skill-pill">
+                  <span>CSS</span>
+                  <span class="skill-pill-code">CSS3</span>
+                </div>
+                <div class="skill-pill">
+                  <span>JavaScript</span>
+                  <span class="skill-pill-code">ES6+</span>
+                </div>
+              </div>
             </div>
 
-            <div class="floating-badge badge-2">
-              <span class="badge-icon">⚡</span>
-              <span>DSA, AI &amp; ML</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 2: ABOUT ME
-         ==================================================================== -->
-    <section class="about section-alt" id="about">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Get To Know Me</div>
-          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-          <p class="section-description">
-            A professional overview of my academic foundation, programming proficiencies, and technical pursuits.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <!-- About Narrative Card -->
-          <div class="about-card reveal">
-            <div class="about-text">
-              <p>
-                Hello! I am <strong>Soumyadeep Pal</strong>, a <strong>second-year Bachelor of Technology (B.Tech) student in Information Technology</strong> at the <strong>Institute of Engineering and Management (IEM), Kolkata</strong>. 
-                My focus centers on structured programming, software engineering, and solving real-world computational challenges.
-              </p>
-              <p>
-                My core programming capabilities span <strong>C, C++, Java, and Python</strong>. 
-                I am deeply invested in sharpening my algorithmic thinking through <strong>Data Structures and Algorithms using C++</strong>, 
-                striving to write clean, maintainable, and computationally optimal code.
-              </p>
-              <p>
-                Fascinated by predictive technology and intelligent automation, I am actively learning <strong>Artificial Intelligence (AI)</strong>, <strong>Machine Learning (ML)</strong>, and <strong>Prompt Engineering</strong>. 
-                Whether collaborating in competitive hackathons, mastering coursework, or building software systems, I bring discipline, technical curiosity, and an eagerness to create meaningful technological solutions.
-              </p>
-            </div>
-          </div>
-
-          <!-- Highlight Cards -->
-          <div class="about-highlights reveal">
-            <div class="highlight-item">
-              <div class="highlight-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
+            <!-- Category 3: Database & Tools -->
+            <div class="skill-card reveal">
+              <div class="skill-card-header">
+                <div class="skill-category-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                  </svg>
+                </div>
+                <h3 class="skill-category-title">Database &amp; Tools</h3>
               </div>
-              <h3 class="highlight-title">Second-Year B.Tech IT</h3>
-              <p class="highlight-desc">
-                Enrolled at IEM Kolkata with deep engagement in computer systems, object-oriented principles, and databases.
-              </p>
+              <div class="skill-badges-list">
+                <div class="skill-pill">
+                  <span>MySQL</span>
+                  <span class="skill-pill-code">RDBMS</span>
+                </div>
+                <div class="skill-pill">
+                  <span>Git</span>
+                  <span class="skill-pill-code">CLI</span>
+                </div>
+                <div class="skill-pill">
+                  <span>GitHub</span>
+                  <span class="skill-pill-code">Workflow</span>
+                </div>
+              </div>
             </div>
 
-            <div class="highlight-item">
-              <div class="highlight-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
+            <!-- Category 4: Currently Learning (Active Focus) -->
+            <div class="skill-card reveal">
+              <div class="skill-card-header">
+                <div class="skill-category-icon" style="background: rgba(13, 148, 136, 0.12); color: var(--accent-secondary);">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <h3 class="skill-category-title">Currently Learning</h3>
+                <span class="skill-status-tag">
+                  <span class="skill-status-dot"></span>
+                  <span>Active</span>
+                </span>
               </div>
-              <h3 class="highlight-title">Core Programming</h3>
-              <p class="highlight-desc">
-                Writing robust and structured code in C, C++, Java, and Python for foundational and modern applications.
-              </p>
-            </div>
-
-            <div class="highlight-item">
-              <div class="highlight-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="6" y1="3" x2="6" y2="15"></line>
-                  <circle cx="18" cy="6" r="3"></circle>
-                  <circle cx="6" cy="18" r="3"></circle>
-                  <path d="M18 9a9 9 0 0 1-9 9"></path>
-                </svg>
-              </div>
-              <h3 class="highlight-title">DSA using C++</h3>
-              <p class="highlight-desc">
-                Actively learning and implementing Data Structures and Algorithms with a focus on optimal complexity.
-              </p>
-            </div>
-
-            <div class="highlight-item">
-              <div class="highlight-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"></path>
-                  <path d="M18 10a6 6 0 0 1 4 6v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a6 6 0 0 1 4-6"></path>
-                  <circle cx="12" cy="14" r="2"></circle>
-                </svg>
-              </div>
-              <h3 class="highlight-title">AI &amp; Machine Learning</h3>
-              <p class="highlight-desc">
-                Exploring artificial intelligence paradigms, predictive modeling techniques, and machine learning algorithms.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 3: SKILLS
-         ==================================================================== -->
-    <section class="skills" id="skills">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Core Competencies</div>
-          <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
-          <p class="section-description">
-            Programming languages, technologies, and tools I use, alongside areas of dedicated ongoing study.
-          </p>
-        </div>
-
-        <div class="skills-grid">
-          <!-- Category 1: Programming Languages -->
-          <div class="skill-card reveal">
-            <div class="skill-card-header">
-              <div class="skill-category-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-              </div>
-              <h3 class="skill-category-title">Programming Languages</h3>
-            </div>
-            <div class="skill-badges-list">
-              <div class="skill-pill">
-                <span>C</span>
-                <span class="skill-pill-code">.c</span>
-              </div>
-              <div class="skill-pill">
-                <span>C++</span>
-                <span class="skill-pill-code">.cpp</span>
-              </div>
-              <div class="skill-pill">
-                <span>Java</span>
-                <span class="skill-pill-code">.java</span>
-              </div>
-              <div class="skill-pill">
-                <span>Python</span>
-                <span class="skill-pill-code">.py</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Category 2: Web Technologies -->
-          <div class="skill-card reveal">
-            <div class="skill-card-header">
-              <div class="skill-category-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <h3 class="skill-category-title">Web Technologies</h3>
-            </div>
-            <div class="skill-badges-list">
-              <div class="skill-pill">
-                <span>HTML</span>
-                <span class="skill-pill-code">HTML5</span>
-              </div>
-              <div class="skill-pill">
-                <span>CSS</span>
-                <span class="skill-pill-code">CSS3</span>
-              </div>
-              <div class="skill-pill">
-                <span>JavaScript</span>
-                <span class="skill-pill-code">ES6+</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Category 3: Database & Tools -->
-          <div class="skill-card reveal">
-            <div class="skill-card-header">
-              <div class="skill-category-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                </svg>
-              </div>
-              <h3 class="skill-category-title">Database &amp; Tools</h3>
-            </div>
-            <div class="skill-badges-list">
-              <div class="skill-pill">
-                <span>MySQL</span>
-                <span class="skill-pill-code">RDBMS</span>
-              </div>
-              <div class="skill-pill">
-                <span>Git</span>
-                <span class="skill-pill-code">CLI</span>
-              </div>
-              <div class="skill-pill">
-                <span>GitHub</span>
-                <span class="skill-pill-code">Workflow</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Category 4: Currently Learning (Active Focus) -->
-          <div class="skill-card reveal">
-            <div class="skill-card-header">
-              <div class="skill-category-icon" style="background: rgba(13, 148, 136, 0.12); color: var(--accent-secondary);">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                  <polyline points="2 17 12 22 22 17"></polyline>
-                  <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
-              </div>
-              <h3 class="skill-category-title">Currently Learning</h3>
-              <span class="skill-status-tag">
-                <span class="skill-status-dot"></span>
-                <span>Active</span>
-              </span>
-            </div>
-            <div class="skill-badges-list">
-              <div class="skill-pill">
-                <span>DSA using C++</span>
-                <span class="skill-pill-code">C++</span>
-              </div>
-              <div class="skill-pill">
-                <span>Artificial Intelligence</span>
-                <span class="skill-pill-code">AI</span>
-              </div>
-              <div class="skill-pill">
-                <span>Machine Learning</span>
-                <span class="skill-pill-code">ML</span>
-              </div>
-              <div class="skill-pill">
-                <span>Prompt Engineering</span>
-                <span class="skill-pill-code">AI/LLM</span>
+              <div class="skill-badges-list">
+                <div class="skill-pill">
+                  <span>DSA using C++</span>
+                  <span class="skill-pill-code">C++</span>
+                </div>
+                <div class="skill-pill">
+                  <span>Artificial Intelligence</span>
+                  <span class="skill-pill-code">AI</span>
+                </div>
+                <div class="skill-pill">
+                  <span>Machine Learning</span>
+                  <span class="skill-pill-code">ML</span>
+                </div>
+                <div class="skill-pill">
+                  <span>Prompt Engineering</span>
+                  <span class="skill-pill-code">AI/LLM</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ====================================================================
-         SECTION: AI TOOLS & PRODUCTIVITY
-         Augmented development workflows, prompt engineering, and modern AI tools
-         ==================================================================== -->
-    <section class="ai-tools section-alt" id="ai-tools">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Augmented Development</div>
-          <h2 class="section-title">AI Tools &amp; <span class="gradient-text">Productivity</span></h2>
-          <p class="section-description">
-            Leveraging cutting-edge large language models, prompt engineering, and intelligent tooling to accelerate software design, research, and algorithmic problem-solving.
-          </p>
-        </div>
-
-        <div class="ai-tools-grid">
-          <!-- Tool 1: ChatGPT & Claude -->
-          <article class="ai-tool-card reveal">
-            <div class="ai-tool-header">
-              <div class="ai-tool-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-              </div>
-              <span class="ai-tool-badge">Foundational LLMs</span>
-            </div>
-            <h3 class="ai-tool-title">ChatGPT &amp; Claude</h3>
-            <p class="ai-tool-desc">
-              Utilizing state-of-the-art conversational LLMs for architectural ideation, algorithm decomposition, complex code explanation, and deep conceptual debugging.
+      <!-- SECTION: ROADMAP (MY LEARNING JOURNEY) -->
+      <section class="roadmap section-alt" id="roadmap">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Timeline</div>
+            <h2 class="section-title">My Learning <span class="gradient-text">Journey</span></h2>
+            <p class="section-description">
+              A verified chronological timeline of my foundational programming roots, academic milestones, and ongoing explorations in software and artificial intelligence.
             </p>
-            <div class="ai-tool-tags">
-              <span class="tech-tag">ChatGPT</span>
-              <span class="tech-tag">Claude</span>
-              <span class="tech-tag">Reasoning</span>
-              <span class="tech-tag">Code Analysis</span>
-            </div>
-          </article>
+          </div>
 
-          <!-- Tool 2: AI-Assisted Coding -->
-          <article class="ai-tool-card reveal">
-            <div class="ai-tool-header">
-              <div class="ai-tool-icon">
+          <div class="timeline reveal">
+            <!-- Milestone 1: 2018-2020 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2018 – 2020</span>
+                <h3 class="timeline-title">HTML Basics</h3>
+                <p class="timeline-desc">Introduction to web development.</p>
+                <div class="timeline-tags">
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">Web Basics</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 2: 2020-2023 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2020 – 2023</span>
+                <h3 class="timeline-title">Class 10 – ICSE</h3>
+                <p class="timeline-desc">Introduction to Programming using Java. Learned Java fundamentals.</p>
+                <div class="timeline-tags">
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">ICSE Curriculum</span>
+                  <span class="tech-tag">OOP Principles</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 3: 2023-2025 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2023 – 2025</span>
+                <h3 class="timeline-title">Python Programming</h3>
+                <p class="timeline-desc">Studied Python in detail under CBSE curriculum.</p>
+                <div class="timeline-tags">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">CBSE Curriculum</span>
+                  <span class="tech-tag">Scripting</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 4: 2023-2025 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2023 – 2025</span>
+                <h3 class="timeline-title">Networking and DBMS</h3>
+                <p class="timeline-desc">
+                  &bull; Networking Basics<br>
+                  &bull; Database Management Systems<br>
+                  &bull; MySQL<br>
+                  &bull; Fundamentals of Data Structures
+                </p>
+                <div class="timeline-tags">
+                  <span class="tech-tag">Networking</span>
+                  <span class="tech-tag">DBMS</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">Data Structures</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 5: 2025-2026 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2025 – 2026</span>
+                <h3 class="timeline-title">C Programming &amp; AI / Data Science</h3>
+                <p class="timeline-desc">
+                  Introduction to C Programming.<br>
+                  Introduction to AI and Data Science using Python.<br>
+                  Libraries: NumPy, Pandas, Matplotlib.<br>
+                  Personal Learning: C++ Programming.
+                </p>
+                <div class="timeline-tags">
+                  <span class="tech-tag">C Language</span>
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">NumPy</span>
+                  <span class="tech-tag">Pandas</span>
+                  <span class="tech-tag">Matplotlib</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 6: 2026-ONGOING -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2026 – ONGOING</span>
+                <h3 class="timeline-title">DSA &amp; Intelligent Systems</h3>
+                <p class="timeline-desc">
+                  <strong>Currently Learning:</strong> Data Structures and Algorithms using C/C++.<br><br>
+                  <strong>Additional Learning Interests:</strong><br>
+                  &bull; Artificial Intelligence<br>
+                  &bull; Machine Learning<br>
+                  &bull; Prompt Engineering
+                </p>
+                <div class="timeline-tags">
+                  <span class="tech-tag">DSA (C++)</span>
+                  <span class="tech-tag">Artificial Intelligence</span>
+                  <span class="tech-tag">Machine Learning</span>
+                  <span class="tech-tag">Prompt Engineering</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: PROJECTS -->
+      <section class="projects" id="projects">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Featured Portfolio</div>
+            <h2 class="section-title">Notable <span class="gradient-text">Projects</span></h2>
+            <p class="section-description">
+              Selected engineering and software projects demonstrating problem-solving, clean code, artificial intelligence, and practical execution.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project 1: CropSense AI -->
+            <article class="project-card reveal">
+              <div class="project-preview">
+                <img src="assets/images/cropsense.svg" alt="CropSense AI - Smart agriculture insights graphic" loading="lazy">
+                <span class="project-category-tag">AI in Agriculture</span>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">CropSense AI</h3>
+                <p class="project-description">
+                  An AI-driven agricultural platform focused on helping users with crop-related insights, 
+                  soil health analysis, disease identification, and smart crop recommendations for sustainable farming.
+                </p>
+                <div class="project-tech-tags">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Artificial Intelligence</span>
+                  <span class="tech-tag">Machine Learning</span>
+                  <span class="tech-tag">AgriTech</span>
+                  <span class="tech-tag">Vercel</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn-project-analysis" onclick="openProjectModal('cropsense')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>View Detailed Analysis</span>
+                  </button>
+                  <a href="https://cropsense-ai-1-g1mumq933-roysubhasistech-7470s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-demo" aria-label="Launch Live Demo for CropSense AI">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                    </svg>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: EduPilot AI -->
+            <article class="project-card reveal">
+              <div class="project-preview">
+                <img src="assets/images/edupilot.svg" alt="EduPilot AI - AI-powered educational platform graphic" loading="lazy">
+                <span class="project-category-tag">AI Education &bull; Collaborative</span>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">EduPilot AI</h3>
+                <p class="project-description">
+                  A collaborative AI-powered educational web platform designed to streamline student learning journeys, 
+                  offer interactive curriculum navigation, and assist learners with intelligent academic guidance.
+                </p>
+                <div class="project-tech-tags">
+                  <span class="tech-tag">Collaborative</span>
+                  <span class="tech-tag">Artificial Intelligence</span>
+                  <span class="tech-tag">JavaScript / React</span>
+                  <span class="tech-tag">EdTech</span>
+                  <span class="tech-tag">Vercel</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn-project-analysis" onclick="openProjectModal('edupilot')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>View Detailed Analysis</span>
+                  </button>
+                  <a href="https://github.com/SubhasisRoy578/EduPilot-AI" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for EduPilot AI">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Repository</span>
+                  </a>
+                  <a href="https://edupilot-ai-tau.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-demo" aria-label="Launch Live Demo for EduPilot AI">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                    </svg>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3: EventIQ -->
+            <article class="project-card reveal">
+              <div class="project-preview">
+                <img src="assets/images/eventiq.svg" alt="EventIQ - Event management website graphic" loading="lazy">
+                <span class="project-category-tag">Web Application</span>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">EventIQ: Event Management Website</h3>
+                <p class="project-description">
+                  A modern and responsive web platform built for seamless event coordination, attendee registrations, 
+                  and live scheduling. Features clean user journeys, interactive ticket tracking, and responsive event discovery.
+                </p>
+                <div class="project-tech-tags">
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">UI/UX Design</span>
+                  <span class="tech-tag">DOM Manipulation</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn-project-analysis" onclick="openProjectModal('eventiq')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>View Detailed Analysis</span>
+                  </button>
+                  <a href="https://github.com/SoumyadeepPal2007/EventIQ" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for EventIQ">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Repository</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 4: Smart Factory Dashboard -->
+            <article class="project-card reveal">
+              <div class="project-preview">
+                <img src="assets/images/smart-factory.svg" alt="Smart Factory Dashboard graphic" loading="lazy">
+                <span class="project-category-tag">Industrial IoT &amp; Analytics</span>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Smart Factory Dashboard</h3>
+                <p class="project-description">
+                  A real-time telemetry dashboard for smart manufacturing environments. Monitors industrial sensor inputs, 
+                  overall equipment effectiveness (OEE), core temperatures, and operational uptime with interactive visualization.
+                </p>
+                <div class="project-tech-tags">
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Data Visualization</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn-project-analysis" onclick="openProjectModal('smartfactory')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>View Detailed Analysis</span>
+                  </button>
+                  <a href="https://github.com/SoumyadeepPal2007/smart-factory-dashboard" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for Smart Factory Dashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Repository</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 5: WallBot -->
+            <article class="project-card reveal">
+              <div class="project-preview">
+                <img src="assets/images/wallbot.svg" alt="WallBot - Wall climbing painting robot graphic" loading="lazy">
+                <span class="project-category-tag">Robotics &amp; IoT</span>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">WallBot: Wall Climbing Painting Robot</h3>
+                <p class="project-description">
+                  An innovative climbing robot designed to adhere securely to vertical surfaces and apply uniform paint coatings. 
+                  Engineered to mitigate hazardous high-altitude manual painting tasks through automated trajectory control and sensor integration.
+                </p>
+                <div class="project-tech-tags">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">C</span>
+                  <span class="tech-tag">Robotics</span>
+                  <span class="tech-tag">IoT Hardware</span>
+                  <span class="tech-tag">Embedded Control</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn-project-analysis" onclick="openProjectModal('wallbot')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>View Detailed Analysis</span>
+                  </button>
+                  <a href="https://github.com/SoumyadeepPal2007/WallBot" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for WallBot">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Repository</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 6: Train Reservation System -->
+            <article class="project-card reveal">
+              <div class="project-preview">
+                <img src="assets/images/train-reservation.svg" alt="Train Reservation System graphic" loading="lazy">
+                <span class="project-category-tag">Systems &amp; Database Design</span>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Train Reservation System</h3>
+                <p class="project-description">
+                  A dependable reservation engine delivering deterministic passenger berth allocations, route scheduling, 
+                  and unique PNR transaction management. Implements relational database integrity and optimized queries.
+                </p>
+                <div class="project-tech-tags">
+                  <span class="tech-tag">C</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">Relational Schemas</span>
+                  <span class="tech-tag">Data Structures</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn-project-analysis" onclick="openProjectModal('trainreservation')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>View Detailed Analysis</span>
+                  </button>
+                  <a href="https://github.com/SoumyadeepPal2007/train-reservation-system" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for Train Reservation System">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span>Repository</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: ACHIEVEMENTS -->
+      <section class="achievements section-alt" id="achievements">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Milestones &amp; Honors</div>
+            <h2 class="section-title">Key <span class="gradient-text">Achievements</span></h2>
+            <p class="section-description">
+              Verified competitive credentials, hackathons, and academic milestones earned with diligence.
+            </p>
+          </div>
+
+          <div class="achievements-grid">
+            <!-- Achievement 1: NPTEL Elite + Silver (Top 5%) -->
+            <div class="achievement-card reveal">
+              <div class="achievement-badges-wrap">
+                <span class="achievement-badge-pill rank-badge">Top 5%</span>
+                <span class="achievement-badge-pill">Elite + Silver</span>
+              </div>
+              <div class="achievement-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                  <circle cx="12" cy="12" r="2"></circle>
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
                 </svg>
               </div>
-              <span class="ai-tool-badge">Developer Velocity</span>
+              <h3 class="achievement-title">NPTEL Elite + Silver Certification</h3>
+              <p class="achievement-issuer">National Programme on Technology Enhanced Learning (IIT)</p>
+              <p class="achievement-desc">
+                Awarded the prestigious <strong>Elite + Silver Certification</strong> and ranked among the <strong>Top 5%</strong> candidates nationally in NPTEL examination. Validates deep subject understanding, analytical problem-solving, and disciplined academic testing.
+              </p>
             </div>
-            <h3 class="ai-tool-title">AI-Assisted Coding</h3>
-            <p class="ai-tool-desc">
-              Accelerating programming workflows with intelligent pair-programming tools. Writing boilerplate, refactoring algorithms, catching edge-case bugs, and crafting unit tests.
-            </p>
-            <div class="ai-tool-tags">
-              <span class="tech-tag">Copilot</span>
-              <span class="tech-tag">AI Autocomplete</span>
-              <span class="tech-tag">Refactoring</span>
-              <span class="tech-tag">Test Synthesis</span>
-            </div>
-          </article>
 
-          <!-- Tool 3: Prompt Engineering -->
-          <article class="ai-tool-card reveal">
-            <div class="ai-tool-header">
-              <div class="ai-tool-icon">
+            <!-- Achievement 2: Hackathon Participation -->
+            <div class="achievement-card reveal">
+              <div class="achievement-badges-wrap">
+                <span class="achievement-badge-pill">Collaborative Sprint</span>
+              </div>
+              <div class="achievement-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                 </svg>
               </div>
-              <span class="ai-tool-badge">Core Competency</span>
+              <h3 class="achievement-title">Hackathon Participation</h3>
+              <p class="achievement-issuer">Competitive Problem Solving &amp; Rapid Prototyping</p>
+              <p class="achievement-desc">
+                Actively participated in demanding hackathon sprints, collaborating in engineering teams to conceive, 
+                code, and deliver working software solutions under intense time constraints.
+              </p>
             </div>
-            <h3 class="ai-tool-title">Prompt Engineering</h3>
-            <p class="ai-tool-desc">
-              Mastering structured prompt design methodologies, including few-shot prompting, chain-of-thought (CoT) reasoning, role framing, and deterministic output formatting.
-            </p>
-            <div class="ai-tool-tags">
-              <span class="tech-tag">Few-Shot Prompting</span>
-              <span class="tech-tag">Chain-of-Thought</span>
-              <span class="tech-tag">Context Windowing</span>
-              <span class="tech-tag">Structured Output</span>
-            </div>
-          </article>
 
-          <!-- Tool 4: AI-Based Research & Productivity -->
-          <article class="ai-tool-card reveal">
-            <div class="ai-tool-header">
-              <div class="ai-tool-icon">
+            <!-- Achievement 3: Academic Achievements -->
+            <div class="achievement-card reveal">
+              <div class="achievement-badges-wrap">
+                <span class="achievement-badge-pill">Institutional</span>
+              </div>
+              <div class="achievement-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
               </div>
-              <span class="ai-tool-badge">Knowledge Synthesis</span>
+              <h3 class="achievement-title">Academic Achievements</h3>
+              <p class="achievement-issuer">Institute of Engineering and Management (IEM), Kolkata</p>
+              <p class="achievement-desc">
+                Demonstrated consistent academic excellence across core Information Technology engineering coursework, active participation in departmental technical presentations, and project evaluations.
+              </p>
             </div>
-            <h3 class="ai-tool-title">AI Research &amp; Productivity</h3>
-            <p class="ai-tool-desc">
-              Synthesizing extensive research papers, official documentation, technical roadmaps, and academic literature into actionable engineering knowledge and clean summaries.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: EDUCATION -->
+      <section class="education" id="education">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Academic Roots</div>
+            <h2 class="section-title">Educational <span class="gradient-text">Journey</span></h2>
+            <p class="section-description">
+              Rigorous engineering foundation and formal curriculum at one of the premier technical institutes in Eastern India.
             </p>
-            <div class="ai-tool-tags">
-              <span class="tech-tag">Paper Synthesis</span>
-              <span class="tech-tag">Doc Intelligence</span>
-              <span class="tech-tag">Workflow Automation</span>
-              <span class="tech-tag">Technical Notes</span>
+          </div>
+
+          <div class="education-container reveal">
+            <div class="education-timeline-card">
+              <div class="education-header">
+                <div>
+                  <h3 class="degree-title">Bachelor of Technology (B.Tech)</h3>
+                  <div class="institution-name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                    <span>Institute of Engineering and Management (IEM), Kolkata</span>
+                  </div>
+                </div>
+                <div class="education-period-badge">
+                  Second Year &bull; Information Technology
+                </div>
+              </div>
+
+              <p class="education-description">
+                Currently in the <strong>Second Year</strong> of B.Tech in Information Technology. 
+                Engaging in comprehensive coursework covering core computer science principles, computational complexity, 
+                relational database design, and emerging machine learning paradigms.
+              </p>
+
+              <h4 class="coursework-title">Key Coursework &amp; Subject Areas:</h4>
+              <div class="coursework-tags">
+                <span class="coursework-pill">Data Structures &amp; Algorithms (C++)</span>
+                <span class="coursework-pill">Object-Oriented Programming (Java / C++)</span>
+                <span class="coursework-pill">Database Management Systems (MySQL)</span>
+                <span class="coursework-pill">AI &amp; Machine Learning Foundations</span>
+                <span class="coursework-pill">Computer Networks</span>
+                <span class="coursework-pill">Operating Systems (OS)</span>
+              </div>
             </div>
-          </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ====================================================================
-         SECTION 4: PROJECTS
-         Expanded with CropSense AI & EduPilot AI alongside 4 existing projects
-         ==================================================================== -->
-    <section class="projects" id="projects">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Featured Portfolio</div>
-          <h2 class="section-title">Notable <span class="gradient-text">Projects</span></h2>
-          <p class="section-description">
-            Selected engineering and software projects demonstrating problem-solving, clean code, artificial intelligence, and practical execution.
-          </p>
+      <!-- SECTION 7: AI & TECHNOLOGY (WITH INTRODUCTION VIDEO) -->
+      <section class="ai-tools section-alt" id="ai-tools">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Augmented Development</div>
+            <h2 class="section-title">AI &amp; <span class="gradient-text">Technology</span></h2>
+            <p class="section-description">
+              Leveraging cutting-edge large language models, prompt engineering, and modern intelligence tooling to accelerate software design, research, and algorithmic problem-solving.
+            </p>
+          </div>
+
+          <!-- Video Showcase Card with Attractive Button -->
+          <div class="video-section reveal">
+            <div class="video-badge" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.35rem 0.9rem;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);border-radius:9999px;color:#dc2626;font-size:0.8rem;font-weight:700;margin-bottom:1rem;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#dc2626;display:inline-block;animation:pulse 1.8s infinite;"></span>
+              <span>Personal Video Introduction</span>
+            </div>
+            <h3 class="video-section-title">Meet Soumyadeep Pal</h3>
+            <p class="video-section-desc">
+              Watch a personal walkthrough of my engineering mindset, passion for core programming in C++ and Python, and vision for intelligent AI applications.
+            </p>
+            <button type="button" class="video-trigger-btn" aria-label="Watch Introduction Video">
+              <span class="play-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+              </span>
+              <span>▶ Watch My Introduction</span>
+            </button>
+          </div>
+
+          <!-- AI Tools Grid -->
+          <div class="ai-tools-grid" style="margin-top: 3rem;">
+            <!-- Tool 1: ChatGPT & Claude -->
+            <article class="ai-tool-card reveal">
+              <div class="ai-tool-header">
+                <div class="ai-tool-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </div>
+                <span class="ai-tool-badge">Foundational LLMs</span>
+              </div>
+              <h3 class="ai-tool-title">ChatGPT &amp; Claude</h3>
+              <p class="ai-tool-desc">
+                Utilizing state-of-the-art conversational LLMs for architectural ideation, algorithm decomposition, complex code explanation, and deep conceptual debugging.
+              </p>
+              <div class="ai-tool-tags">
+                <span class="tech-tag">ChatGPT</span>
+                <span class="tech-tag">Claude</span>
+                <span class="tech-tag">Reasoning</span>
+                <span class="tech-tag">Code Analysis</span>
+              </div>
+            </article>
+
+            <!-- Tool 2: AI-Assisted Coding -->
+            <article class="ai-tool-card reveal">
+              <div class="ai-tool-header">
+                <div class="ai-tool-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                    <circle cx="12" cy="12" r="2"></circle>
+                  </svg>
+                </div>
+                <span class="ai-tool-badge">Developer Velocity</span>
+              </div>
+              <h3 class="ai-tool-title">AI-Assisted Coding</h3>
+              <p class="ai-tool-desc">
+                Accelerating programming workflows with intelligent pair-programming tools. Writing boilerplate, refactoring algorithms, catching edge-case bugs, and crafting unit tests.
+              </p>
+              <div class="ai-tool-tags">
+                <span class="tech-tag">Copilot</span>
+                <span class="tech-tag">AI Autocomplete</span>
+                <span class="tech-tag">Refactoring</span>
+                <span class="tech-tag">Test Synthesis</span>
+              </div>
+            </article>
+
+            <!-- Tool 3: Prompt Engineering -->
+            <article class="ai-tool-card reveal">
+              <div class="ai-tool-header">
+                <div class="ai-tool-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </div>
+                <span class="ai-tool-badge">Core Competency</span>
+              </div>
+              <h3 class="ai-tool-title">Prompt Engineering</h3>
+              <p class="ai-tool-desc">
+                Mastering structured prompt design methodologies, including few-shot prompting, chain-of-thought (CoT) reasoning, role framing, and deterministic output formatting.
+              </p>
+              <div class="ai-tool-tags">
+                <span class="tech-tag">Few-Shot Prompting</span>
+                <span class="tech-tag">Chain-of-Thought</span>
+                <span class="tech-tag">Context Windowing</span>
+                <span class="tech-tag">Structured Output</span>
+              </div>
+            </article>
+
+            <!-- Tool 4: AI-Based Research & Productivity -->
+            <article class="ai-tool-card reveal">
+              <div class="ai-tool-header">
+                <div class="ai-tool-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  </svg>
+                </div>
+                <span class="ai-tool-badge">Knowledge Synthesis</span>
+              </div>
+              <h3 class="ai-tool-title">AI Research &amp; Productivity</h3>
+              <p class="ai-tool-desc">
+                Synthesizing extensive research papers, official documentation, technical roadmaps, and academic literature into actionable engineering knowledge and clean summaries.
+              </p>
+              <div class="ai-tool-tags">
+                <span class="tech-tag">Paper Synthesis</span>
+                <span class="tech-tag">Doc Intelligence</span>
+                <span class="tech-tag">Workflow Automation</span>
+                <span class="tech-tag">Technical Notes</span>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <div class="projects-grid">
-          <!-- Project 1: CropSense AI -->
-          <article class="project-card reveal">
-            <div class="project-preview">
-              <img src="assets/images/cropsense.svg" alt="CropSense AI - Smart agriculture insights graphic" loading="lazy">
-              <span class="project-category-tag">AI in Agriculture</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">CropSense AI</h3>
-              <p class="project-description">
-                An AI-driven agricultural platform focused on helping users with crop-related insights, 
-                soil health analysis, disease identification, and smart crop recommendations for sustainable farming.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Artificial Intelligence</span>
-                <span class="tech-tag">Machine Learning</span>
-                <span class="tech-tag">AgriTech</span>
-                <span class="tech-tag">Web Deployment</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://cropsense-ai-1-g1mumq933-roysubhasistech-7470s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-demo" aria-label="Launch Live Demo for CropSense AI">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                  </svg>
-                  <span>Live Demo</span>
-                </a>
-              </div>
-            </div>
-          </article>
+      <!-- SECTION 8: CONTACT SECTION REDESIGN (Email Me & WhatsApp Me) -->
+      <section class="contact section-alt" id="contact">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Get in Touch</div>
+            <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+            <p class="section-description">
+              Choose your preferred channel below to reach out directly via email or chat instantly on WhatsApp.
+            </p>
+          </div>
 
-          <!-- Project 2: EduPilot AI -->
-          <article class="project-card reveal">
-            <div class="project-preview">
-              <img src="assets/images/edupilot.svg" alt="EduPilot AI - AI-powered educational platform graphic" loading="lazy">
-              <span class="project-category-tag">AI Education • Collaborative</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">EduPilot AI</h3>
-              <p class="project-description">
-                A collaborative AI-powered educational web platform designed to streamline student learning journeys, 
-                offer interactive curriculum navigation, and assist learners with intelligent academic guidance.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">Collaborative</span>
-                <span class="tech-tag">Artificial Intelligence</span>
-                <span class="tech-tag">JavaScript / React</span>
-                <span class="tech-tag">Web Development</span>
-                <span class="tech-tag">EdTech</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/SubhasisRoy578/EduPilot-AI" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for EduPilot AI">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>Repository</span>
-                </a>
-                <a href="https://edupilot-ai-tau.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-demo" aria-label="Launch Live Demo for EduPilot AI">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                  </svg>
-                  <span>Live Demo</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3: EventIQ -->
-          <article class="project-card reveal">
-            <div class="project-preview">
-              <img src="assets/images/eventiq.svg" alt="EventIQ - Event management website graphic" loading="lazy">
-              <span class="project-category-tag">Web Application</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">EventIQ: Event Management Website</h3>
-              <p class="project-description">
-                A modern and responsive web platform built for seamless event coordination, attendee registrations, 
-                and live scheduling. Features clean user journeys, interactive ticket tracking, and responsive event discovery.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">UI/UX Design</span>
-                <span class="tech-tag">DOM Manipulation</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/SoumyadeepPal2007/EventIQ" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for EventIQ">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>Repository</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 4: Smart Factory Dashboard -->
-          <article class="project-card reveal">
-            <div class="project-preview">
-              <img src="assets/images/smart-factory.svg" alt="Smart Factory Dashboard graphic" loading="lazy">
-              <span class="project-category-tag">Industrial IoT &amp; Analytics</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Smart Factory Dashboard</h3>
-              <p class="project-description">
-                A real-time telemetry dashboard for smart manufacturing environments. Monitors industrial sensor inputs, 
-                overall equipment effectiveness (OEE), core temperatures, and operational uptime with interactive visualization.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">MySQL</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Data Visualization</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/SoumyadeepPal2007/smart-factory-dashboard" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for Smart Factory Dashboard">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>Repository</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 5: WallBot -->
-          <article class="project-card reveal">
-            <div class="project-preview">
-              <img src="assets/images/wallbot.svg" alt="WallBot - Wall climbing painting robot graphic" loading="lazy">
-              <span class="project-category-tag">Robotics &amp; IoT</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">WallBot: Wall Climbing Painting Robot</h3>
-              <p class="project-description">
-                An innovative climbing robot designed to adhere securely to vertical surfaces and apply uniform paint coatings. 
-                Engineered to mitigate hazardous high-altitude manual painting tasks through automated trajectory control and sensor integration.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">C</span>
-                <span class="tech-tag">Robotics</span>
-                <span class="tech-tag">IoT Hardware</span>
-                <span class="tech-tag">Embedded Control</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/SoumyadeepPal2007/WallBot" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for WallBot">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>Repository</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 6: Train Reservation System -->
-          <article class="project-card reveal">
-            <div class="project-preview">
-              <img src="assets/images/train-reservation.svg" alt="Train Reservation System graphic" loading="lazy">
-              <span class="project-category-tag">Systems &amp; Database Design</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Train Reservation System</h3>
-              <p class="project-description">
-                A dependable reservation engine delivering deterministic passenger berth allocations, route scheduling, 
-                and unique PNR transaction management. Implements relational database integrity and optimized queries.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">C</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">MySQL</span>
-                <span class="tech-tag">Relational Schemas</span>
-                <span class="tech-tag">Data Structures</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/SoumyadeepPal2007/train-reservation-system" target="_blank" rel="noopener noreferrer" class="btn-project-github" aria-label="GitHub Repository for Train Reservation System">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span>Repository</span>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 5: ACHIEVEMENTS
-         ==================================================================== -->
-    <section class="achievements section-alt" id="achievements">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Milestones &amp; Honors</div>
-          <h2 class="section-title">Key <span class="gradient-text">Achievements</span></h2>
-          <p class="section-description">
-            Verified competitive credentials, hackathons, and academic milestones earned with diligence.
-          </p>
-        </div>
-
-        <div class="achievements-grid">
-          <!-- Achievement 1: NPTEL Elite + Silver (Top 5%) -->
-          <div class="achievement-card reveal">
-            <div class="achievement-badges-wrap">
-              <span class="achievement-badge-pill rank-badge">Top 5%</span>
-              <span class="achievement-badge-pill">Elite + Silver</span>
-            </div>
-            <div class="achievement-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="7"></circle>
-                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          <!-- Two Separate Option Buttons -->
+          <div class="contact-options reveal">
+            <button type="button" class="contact-option-btn email-btn active" id="contact-tab-email" aria-selected="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-            </div>
-            <h3 class="achievement-title">NPTEL Elite + Silver Certification</h3>
-            <p class="achievement-issuer">National Programme on Technology Enhanced Learning (IIT)</p>
-            <p class="achievement-desc">
-              Awarded the prestigious <strong>Elite + Silver Certification</strong> and ranked among the <strong>Top 5%</strong> candidates nationally in NPTEL examination. Validates deep subject understanding, analytical problem-solving, and disciplined academic testing.
-            </p>
-          </div>
+              <span>Email Me</span>
+            </button>
 
-          <!-- Achievement 2: Hackathon Participation -->
-          <div class="achievement-card reveal">
-            <div class="achievement-badges-wrap">
-              <span class="achievement-badge-pill">Collaborative Sprint</span>
-            </div>
-            <div class="achievement-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            <button type="button" class="contact-option-btn whatsapp-btn" id="contact-tab-whatsapp" aria-selected="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
               </svg>
-            </div>
-            <h3 class="achievement-title">Hackathon Participation</h3>
-            <p class="achievement-issuer">Competitive Problem Solving &amp; Rapid Prototyping</p>
-            <p class="achievement-desc">
-              Actively participated in demanding hackathon sprints, collaborating in engineering teams to conceive, 
-              code, and deliver working software solutions under intense time constraints.
-            </p>
+              <span>WhatsApp Me</span>
+            </button>
           </div>
 
-          <!-- Achievement 3: Academic Achievements -->
-          <div class="achievement-card reveal">
-            <div class="achievement-badges-wrap">
-              <span class="achievement-badge-pill">Institutional</span>
-            </div>
-            <div class="achievement-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-            </div>
-            <h3 class="achievement-title">Academic Achievements</h3>
-            <p class="achievement-issuer">Institute of Engineering and Management (IEM), Kolkata</p>
-            <p class="achievement-desc">
-              Demonstrated consistent academic excellence across core Information Technology engineering coursework, active participation in departmental technical presentations, and project evaluations.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 6: EDUCATION
-         ==================================================================== -->
-    <section class="education" id="education">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Academic Roots</div>
-          <h2 class="section-title">Educational <span class="gradient-text">Journey</span></h2>
-          <p class="section-description">
-            Rigorous engineering foundation and formal curriculum at one of the premier technical institutes in Eastern India.
-          </p>
-        </div>
-
-        <div class="education-container reveal">
-          <div class="education-timeline-card">
-            <div class="education-header">
-              <div>
-                <h3 class="degree-title">Bachelor of Technology (B.Tech)</h3>
-                <div class="institution-name">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                  </svg>
-                  <span>Institute of Engineering and Management (IEM), Kolkata</span>
-                </div>
-              </div>
-              <div class="education-period-badge">
-                Second Year • Information Technology
-              </div>
-            </div>
-
-            <p class="education-description">
-              Currently in the <strong>Second Year</strong> of B.Tech in Information Technology. 
-              Engaging in comprehensive coursework covering core computer science principles, computational complexity, 
-              relational database design, and emerging machine learning paradigms.
-            </p>
-
-            <h4 class="coursework-title">Key Coursework &amp; Subject Areas:</h4>
-            <div class="coursework-tags">
-              <span class="coursework-pill">Data Structures &amp; Algorithms (C++)</span>
-              <span class="coursework-pill">Object-Oriented Programming (Java / C++)</span>
-              <span class="coursework-pill">Database Management Systems (MySQL)</span>
-              <span class="coursework-pill">AI &amp; Machine Learning Foundations</span>
-              <span class="coursework-pill">Computer Networks</span>
-              <span class="coursework-pill">Operating Systems (OS)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 7: CONTACT ME
-         FormSubmit Integration: soumyadeepp269@gmail.com
-         Four Compulsory Fields: Full Name, Designation, Email, Description
-         ==================================================================== -->
-    <section class="contact section-alt" id="contact">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Get In Touch</div>
-          <h2 class="section-title">Contact <span class="gradient-text">Me</span></h2>
-          <p class="section-description">
-            Have an enquiry, collaboration proposal, project idea, or internship opportunity? Send a message below.
-          </p>
-        </div>
-
-        <div class="contact-wrapper">
-          <!-- Left Column: Direct Contact Info -->
-          <div class="contact-info-panel reveal">
-            <div class="contact-info-card">
-              <h3 class="contact-info-title">Let's Connect &amp; Collaborate</h3>
-              <p class="contact-info-desc">
-                I am open to discussions regarding software development, internships, collaborative projects, and emerging technology. Reach out directly via the form or through my verified social channels.
-              </p>
-
-              <div class="contact-channels">
-                <!-- Email Channel -->
-                <div class="channel-item">
-                  <div class="channel-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                  </div>
-                  <div class="channel-details">
-                    <span class="channel-label">Direct Email</span>
-                    <a href="mailto:soumyadeepp269@gmail.com" class="channel-val">soumyadeepp269@gmail.com</a>
-                    <button type="button" class="email-copy-pill" data-copy-text="soumyadeepp269@gmail.com" title="Copy email address to clipboard">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                      <span>Copy Email</span>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- LinkedIn Channel -->
-                <div class="channel-item">
-                  <div class="channel-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                      <rect x="2" y="9" width="4" height="12"></rect>
-                      <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                  </div>
-                  <div class="channel-details">
-                    <span class="channel-label">LinkedIn</span>
-                    <a href="https://www.linkedin.com/in/soumyadeep-pal-885140361/" target="_blank" rel="noopener noreferrer" class="channel-val">soumyadeep-pal-885140361</a>
-                  </div>
-                </div>
-
-                <!-- YouTube Channel -->
-                <div class="channel-item">
-                  <div class="channel-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-                    </svg>
-                  </div>
-                  <div class="channel-details">
-                    <span class="channel-label">YouTube</span>
-                    <a href="https://youtube.com/@soumyadeeppal7733" target="_blank" rel="noopener noreferrer" class="channel-val">@soumyadeeppal7733</a>
-                  </div>
-                </div>
-
-                <!-- Institution / Location Channel -->
-                <div class="channel-item">
-                  <div class="channel-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                  </div>
-                  <div class="channel-details">
-                    <span class="channel-label">Location / College</span>
-                    <span class="channel-val">IEM Kolkata, West Bengal, India</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: FormSubmit Form (Four Compulsory Fields) -->
-          <div class="contact-form-card reveal">
-            <div class="form-header">
-              <h3>Send A Direct Message</h3>
-              <p>Fill out the fields below to connect directly with me.</p>
-            </div>
-
-            <!-- FormSubmit Form -->
-            <form action="https://formsubmit.co/soumyadeepp269@gmail.com" method="POST" id="portfolio-contact-form" class="portfolio-contact-form">
-              <!-- FormSubmit Configuration Hidden Fields -->
-              <input type="hidden" name="_subject" value="New Portfolio Enquiry - Soumyadeep Pal">
-              <input type="hidden" name="_template" value="table">
+          <!-- OPTION 1: Email Me Panel -->
+          <div class="contact-panel email-form-panel active" id="email-panel">
+            <form id="email-contact-form" class="clean-form" novalidate>
+              <input type="hidden" name="_subject" value="Portfolio Inquiry - Soumyadeep Pal">
               <input type="hidden" name="_captcha" value="false">
-              <!-- Hidden Honeypot Field for Spam Protection -->
-              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
-              <!-- ROW 1: Full Name & Designation -->
-              <div class="form-row">
-                <!-- FIELD 1: Full Name -->
-                <div class="form-group">
-                  <label for="name" class="form-label">
-                    <span>Full Name</span>
-                    <span class="required-asterisk">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    class="form-control" 
-                    placeholder="Enter your full name" 
-                    required 
-                    autocomplete="name"
-                  >
-                </div>
-
-                <!-- FIELD 2: Designation -->
-                <div class="form-group">
-                  <label for="designation" class="form-label">
-                    <span>Designation</span>
-                    <span class="required-asterisk">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    id="designation" 
-                    name="designation" 
-                    class="form-control" 
-                    placeholder="Student, Recruiter, Developer, Professor, etc." 
-                    required
-                  >
-                </div>
-              </div>
-
-              <!-- FIELD 3: Email Address -->
-              <div class="form-group">
-                <label for="email" class="form-label">
-                  <span>Email Address</span>
-                  <span class="required-asterisk">*</span>
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label for="contact-email-input" class="form-label" style="display:block;margin-bottom:0.5rem;font-weight:600;font-size:0.9rem;">
+                  Your Email Address <span class="required-asterisk">*</span>
                 </label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  class="form-control" 
-                  placeholder="Enter your personal email address" 
-                  required 
-                  autocomplete="email"
-                >
+                <input type="email" id="contact-email-input" name="email" class="form-control" placeholder="name@example.com" required autocomplete="email">
               </div>
 
-              <!-- FIELD 4: Description / Message -->
-              <div class="form-group">
-                <label for="message" class="form-label">
-                  <span>Description / Message</span>
-                  <span class="required-asterisk">*</span>
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="contact-message-input" class="form-label" style="display:block;margin-bottom:0.5rem;font-weight:600;font-size:0.9rem;">
+                  Your Message <span class="required-asterisk">*</span>
                 </label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  class="form-control" 
-                  placeholder="Tell me about your enquiry, collaboration, project idea or anything you want to discuss..." 
-                  rows="5" 
-                  required
-                ></textarea>
+                <textarea id="contact-message-input" name="message" class="form-control" rows="5" placeholder="Hi Soumyadeep, I came across your portfolio and wanted to discuss..." required minlength="5"></textarea>
               </div>
 
-              <!-- Submit Button -->
-              <button type="submit" class="btn-submit" id="submit-btn">
-                <span class="btn-text">Send Message</span>
-                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <div class="contact-success-alert form-alert success" style="display:none;" role="status"></div>
+              <div class="contact-error-alert form-alert error" style="display:none;" role="alert"></div>
+
+              <button type="submit" class="btn-submit" id="email-submit-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="22" y1="2" x2="11" y2="13"></line>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
-                <span class="spinner" aria-hidden="true"></span>
+                <span>Send Message</span>
               </button>
 
-              <!-- Real Submission Success Feedback Banner -->
-              <div class="form-alert success" id="form-alert-success" role="alert" style="display: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              <p class="form-note" style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-muted);text-align:center;">
+                Submissions are sent directly to <strong>soumyadeepp269@gmail.com</strong> with your email set as Reply-To.
+              </p>
+            </form>
+          </div>
+
+          <!-- OPTION 2: WhatsApp Me Panel -->
+          <div class="contact-panel whatsapp-panel" id="whatsapp-panel" style="display:none;">
+            <div class="whatsapp-card" style="padding:1rem;">
+              <div class="whatsapp-icon-circle" style="width:72px;height:72px;background:rgba(37,211,102,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;color:#25d366;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                 </svg>
-                <div class="alert-message">
-                  Thank you! Your message has been sent successfully to Soumyadeep. I'll get back to you shortly.
-                </div>
+              </div>
+              <h3 class="whatsapp-title" style="font-size:1.4rem;font-weight:800;color:var(--text-primary);margin-bottom:0.6rem;">Connect on WhatsApp</h3>
+              <p class="whatsapp-desc" style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.6;">
+                Reach me directly on WhatsApp at <strong>+91 6291067449</strong>. Clicking below opens a direct chat with a pre-filled introductory message.
+              </p>
+              <a href="https://wa.me/916291067449?text=Hi%20Soumyadeep,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-chat" style="display:inline-flex;align-items:center;gap:0.75rem;padding:0.9rem 1.8rem;background:#25d366;color:white;border-radius:var(--radius-md);font-weight:700;font-size:1rem;text-decoration:none;transition:all var(--transition-fast);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                </svg>
+                <span>Start WhatsApp Chat</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: SEE DOCUMENTS SECTION (At end of Normal Mode) -->
+      <section class="documents" id="documents">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-badge">Verified Credentials</div>
+            <h2 class="section-title">See <span class="gradient-text">Documents</span></h2>
+            <p class="section-description">
+              Access verified credentials, professional course certificates, supplementary study documentation, and my official curriculum vitae.
+            </p>
+          </div>
+
+          <!-- Documents Grid populated dynamically via documentsConfig in script.js -->
+          <div class="documents-grid" id="documents-grid">
+            <!-- Dynamically rendered by initDocuments() -->
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER (Inside Normal Mode) -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="brand-monogram" style="margin-bottom: 0.75rem;">SP</div>
+              <h4 style="font-size: 1.25rem; font-weight: 800;">Soumyadeep Pal</h4>
+              <p class="brand-role" style="font-size: 0.95rem; color: var(--accent-primary); font-weight: 600; margin-top: 0.25rem;">
+                B.Tech IT Student | Aspiring Software Developer | AI &amp; ML Enthusiast
+              </p>
+              <p class="footer-bio">
+                Second-year Information Technology student at IEM Kolkata. Dedicated to software development, DSA in C++, and actively exploring AI &amp; Machine Learning.
+              </p>
+            </div>
+
+            <div class="footer-links-group">
+              <!-- Section Links -->
+              <div>
+                <h5 class="footer-column-title">Navigation</h5>
+                <ul class="footer-nav-list">
+                  <li><a href="#home" class="footer-nav-link">Home</a></li>
+                  <li><a href="#about" class="footer-nav-link">About Me</a></li>
+                  <li><a href="#skills" class="footer-nav-link">Skills</a></li>
+                  <li><a href="#roadmap" class="footer-nav-link">Roadmap</a></li>
+                  <li><a href="#projects" class="footer-nav-link">Projects</a></li>
+                  <li><a href="#achievements" class="footer-nav-link">Achievements</a></li>
+                  <li><a href="#education" class="footer-nav-link">Education</a></li>
+                  <li><a href="#ai-tools" class="footer-nav-link">AI &amp; Technology</a></li>
+                  <li><a href="#contact" class="footer-nav-link">Contact</a></li>
+                  <li><a href="#documents" class="footer-nav-link">Documents</a></li>
+                </ul>
               </div>
 
-              <!-- Submission Error Feedback Banner -->
-              <div class="form-alert error" id="form-alert-error" role="alert" style="display: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-                <div class="alert-message" id="error-message-text">
-                  Unable to send message. Please check your network or email directly at soumyadeepp269@gmail.com.
-                </div>
+              <!-- Social Connections -->
+              <div>
+                <h5 class="footer-column-title">Connect</h5>
+                <ul class="footer-nav-list">
+                  <li>
+                    <a href="https://github.com/SoumyadeepPal2007" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                      GitHub Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.linkedin.com/in/soumyadeep-pal-885140361/" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                      LinkedIn Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://youtube.com/@soumyadeeppal7733" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                      YouTube Channel
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:soumyadeepp269@gmail.com" class="footer-nav-link">
+                      soumyadeepp269@gmail.com
+                    </a>
+                  </li>
+                </ul>
               </div>
-            </form>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p class="copyright-text">
+              &copy; <span id="current-year">2026</span> Soumyadeep Pal. All rights reserved.
+            </p>
+
+            <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Scroll back to top">
+              <span>Back to Top</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ==================================================================
+         MODE 2: TERMINAL MODE (Developer Interactive CLI)
+         ================================================================== -->
+    <div id="terminal-mode" class="mode-container" style="display: none;">
+      <div class="terminal-layout">
+        <!-- Left Column: Interactive Terminal Window -->
+        <div class="terminal-window">
+          <div class="terminal-titlebar">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">soumyadeep@portfolio: ~ (bash)</span>
+            <button type="button" class="terminal-clear-btn" onclick="executeTerminalCommand('clear')" title="Clear terminal screen" style="margin-left:auto;background:none;border:1px solid #3a2a00;color:#c8a84b;font-family:inherit;font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:4px;cursor:pointer;">clear</button>
+          </div>
+
+          <div class="terminal-output" id="terminal-output" role="log" aria-live="polite">
+            <!-- Dynamic command line logs appear here -->
+          </div>
+
+          <div class="terminal-input-row">
+            <span class="terminal-prompt-symbol">visitor@portfolio:~$</span>
+            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="type a command (e.g. help, about, skills, projects)..." aria-label="Terminal command input">
+            <span class="terminal-cursor" style="display:inline-block;width:8px;height:14px;background:#4ade80;animation:blink 1s step-end infinite;vertical-align:middle;"></span>
+          </div>
+        </div>
+
+        <!-- Right Column: Available Commands Panel -->
+        <div class="terminal-commands-panel" style="background:#111;border:1px solid #3a2a00;border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;box-shadow:0 0 40px rgba(212,168,83,0.08);overflow-y:auto;">
+          <div class="panel-header" style="margin-bottom:1.25rem;border-bottom:1px solid #2a1a00;padding-bottom:0.75rem;">
+            <h3 class="panel-title" style="font-size:0.95rem;font-weight:700;color:#e5c158;letter-spacing:0.05em;">AVAILABLE COMMANDS</h3>
+            <span class="panel-subtitle" style="font-size:0.75rem;color:#888;">Click any command to execute</span>
+          </div>
+
+          <div class="commands-list" style="display:flex;flex-direction:column;gap:0.45rem;">
+            <button type="button" class="cmd-item" data-cmd="help" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">help</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">List all commands</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="about" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">about</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Personal background</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="skills" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">skills</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Languages &amp; tools</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="projects" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">projects</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">All 6 projects</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="education" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">education</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">B.Tech IT IEM</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="roadmap" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">roadmap</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">2018–present</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="achievements" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">achievements</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">NPTEL &amp; hackathons</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="certifications" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">certifications</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Credentials list</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="github" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">github</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Open GitHub</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="linkedin" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">linkedin</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Open LinkedIn</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="youtube" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">youtube</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Open YouTube</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="resume" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">resume</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Open PDF</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="contact" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">contact</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Email &amp; WhatsApp</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="documents" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">documents</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">All documents</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="ai" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">ai</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">AI/ML focus</span>
+            </button>
+            <button type="button" class="cmd-item" data-cmd="clear" style="display:flex;justify-content:space-between;align-items:center;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);color:#c8a84b;padding:0.45rem 0.75rem;border-radius:6px;font-family:inherit;font-size:0.8rem;cursor:pointer;text-align:left;">
+              <span class="cmd-name" style="color:#4ade80;font-weight:700;">clear</span>
+              <span class="cmd-desc" style="color:#888;font-size:0.75rem;">Clear console</span>
+            </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ====================================================================
-         SECTION 8: SEE DOCUMENTS
-         Verified certificates, documents & official resume PDF
-         Dynamic and static card fallback managed by script.js
-         ==================================================================== -->
-    <section class="documents" id="documents">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-badge">Verified Credentials</div>
-          <h2 class="section-title">See <span class="gradient-text">Documents</span></h2>
-          <p class="section-description">
-            Access verified credentials, professional course certificates, supplementary study documentation, and my official curriculum vitae.
-          </p>
-        </div>
-
-        <div class="documents-grid" id="documents-grid">
-          <!-- Populated dynamically via documentsConfig in js/script.js.
-               Initial static cards provided for instant rendering & search engines -->
-          <article class="document-card reveal">
-            <div class="document-header">
-              <div class="document-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <span class="document-badge">Official Resume</span>
-            </div>
-            <div class="document-category">Academic &amp; Career Profile</div>
-            <h3 class="document-title">Official Resume / Curriculum Vitae</h3>
-            <p class="document-desc">Official B.Tech IT resume highlighting core programming in C, C++, Java, and Python, academic credentials, and projects.</p>
-            <div class="document-actions">
-              <a href="assets/documents/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-view-doc">
-                <span>View Resume</span>
+    <!-- ==================================================================
+         MODE 3: RECRUITER MODE (Minimal, Focused Professional View)
+         ================================================================== -->
+    <div id="recruiter-mode" class="mode-container" style="display: none;">
+      <div class="recruiter-container">
+        <!-- Recruiter Header Card -->
+        <header class="recruiter-hero">
+          <img src="assets/images/profile.jpg" alt="Soumyadeep Pal" class="recruiter-avatar" onerror="this.onerror=null; this.src='assets/images/profile-placeholder.svg';">
+          <div class="recruiter-hero-info">
+            <h1 class="recruiter-name">Soumyadeep Pal</h1>
+            <p class="recruiter-title">B.Tech Information Technology Student</p>
+            <p class="recruiter-subtitle">Aspiring Software Developer | AI &amp; ML Enthusiast</p>
+            <p style="font-size:0.95rem;color:#475569;margin-top:0.4rem;">
+              Institute of Engineering and Management (IEM), Kolkata &bull; 2nd Year (Batch 2027)
+            </p>
+            <div class="recruiter-actions">
+              <a href="assets/documents/resume.pdf" target="_blank" rel="noopener noreferrer" class="rec-btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
                 </svg>
+                <span>View Resume</span>
               </a>
-              <a href="assets/documents/resume.pdf" download="Soumyadeep_Pal_Resume.pdf" class="btn-download-doc" title="Download Document" aria-label="Download Official Resume / Curriculum Vitae">
+              <a href="assets/documents/resume.pdf" download="Soumyadeep_Pal_Resume.pdf" class="rec-btn-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                <span>Download</span>
+                <span>Download Resume</span>
               </a>
-            </div>
-          </article>
-
-          <article class="document-card reveal">
-            <div class="document-header">
-              <div class="document-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <span class="document-badge">Verified Certificate</span>
-            </div>
-            <div class="document-category">Professional Credential</div>
-            <h3 class="document-title">LinkedIn Learning Certificate</h3>
-            <p class="document-desc">Verified course completion certificate issued by LinkedIn Learning in professional software engineering methodologies.</p>
-            <div class="document-actions">
-              <a href="https://www.linkedin.com/learning/certificates/7d6e94b18ee82e362d144f5b67ee6c1ce7f8a7d2237228a4e5adf5b0d4f4618e" target="_blank" rel="noopener noreferrer" class="btn-view-doc">
-                <span>View Certificate</span>
+              <button type="button" class="rec-btn-secondary" onclick="downloadBusinessCard()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <line x1="2" y1="10" x2="22" y2="10"></line>
                 </svg>
-              </a>
+                <span>Download My Business Card</span>
+              </button>
             </div>
-          </article>
+          </div>
+        </header>
 
-          <article class="document-card reveal">
-            <div class="document-header">
-              <div class="document-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
+        <!-- 1. Professional Introduction -->
+        <section class="recruiter-section">
+          <h2 class="recruiter-section-title">1. Professional Introduction</h2>
+          <div class="recruiter-card">
+            <p style="font-size:1.02rem;line-height:1.75;color:#1e293b;">
+              I am a second-year Information Technology undergraduate at the <strong>Institute of Engineering and Management (IEM), Kolkata</strong>. 
+              Equipped with disciplined foundations in <strong>C, C++, Java, and Python</strong>, I am actively honing my problem-solving capabilities through <strong>Data Structures &amp; Algorithms using C++</strong> 
+              and exploring practical applications in <strong>Artificial Intelligence, Machine Learning, and Prompt Engineering</strong>. 
+              I am actively seeking software engineering and collaborative development internships to contribute value to engineering teams.
+            </p>
+          </div>
+        </section>
+
+        <!-- 2. Resume -->
+        <section class="recruiter-section">
+          <h2 class="recruiter-section-title">2. Resume / Curriculum Vitae</h2>
+          <div class="recruiter-card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
+            <div>
+              <h3 style="font-size:1.15rem;font-weight:700;color:#0f172a;margin-bottom:0.25rem;">Official Technical Resume</h3>
+              <p style="font-size:0.9rem;color:#64748b;">Complete academic record, project summaries, core competencies, and verified credentials.</p>
+            </div>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <a href="assets/documents/resume.pdf" target="_blank" rel="noopener noreferrer" class="rec-btn-primary">View Resume</a>
+              <a href="assets/documents/resume.pdf" download="Soumyadeep_Pal_Resume.pdf" class="rec-btn-secondary">Download Resume</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. All Projects -->
+        <section class="recruiter-section">
+          <h2 class="recruiter-section-title">3. All Projects</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;">
+            <!-- Recruiter Project 1: CropSense AI -->
+            <div class="recruiter-card">
+              <span class="project-category-tag" style="font-size:0.75rem;">AI in Agriculture</span>
+              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">CropSense AI</h3>
+              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+                AI agricultural platform for automated crop disease diagnosis, soil health analysis, and region-specific crop recommendations. Deployed on Vercel.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">AI/ML</span>
+                <span class="tech-tag">Vercel</span>
               </div>
-              <span class="document-badge">Google Drive Resource</span>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button type="button" class="btn-project-analysis" onclick="openProjectModal('cropsense')">
+                  <span>View Detailed Analysis</span>
+                </button>
+                <a href="https://cropsense-ai-1-g1mumq933-roysubhasistech-7470s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-demo">
+                  <span>Live Demo</span>
+                </a>
+              </div>
             </div>
-            <div class="document-category">Technical Study Material</div>
-            <h3 class="document-title">Additional Learning Document</h3>
-            <p class="document-desc">Supplementary technical study material, academic engineering notes, and learning resources shared via Google Drive.</p>
-            <div class="document-actions">
-              <a href="https://drive.google.com/file/d/1yL5rkivxjDsLRyGq8xV9we5BZuq6jC9n/view" target="_blank" rel="noopener noreferrer" class="btn-view-doc">
-                <span>View Document</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
+
+            <!-- Recruiter Project 2: EduPilot AI -->
+            <div class="recruiter-card">
+              <span class="project-category-tag" style="font-size:0.75rem;">AI Education &bull; Collaborative</span>
+              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">EduPilot AI</h3>
+              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+                Collaborative AI education platform offering personalized curriculum navigation, dynamic progress tracking, and smart academic assistance.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">AI Integration</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button type="button" class="btn-project-analysis" onclick="openProjectModal('edupilot')">
+                  <span>View Detailed Analysis</span>
+                </button>
+                <a href="https://github.com/SubhasisRoy578/EduPilot-AI" target="_blank" rel="noopener noreferrer" class="btn-project-github">
+                  <span>Repository</span>
+                </a>
+                <a href="https://edupilot-ai-tau.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-demo">
+                  <span>Live Demo</span>
+                </a>
+              </div>
             </div>
-          </article>
-        </div>
+
+            <!-- Recruiter Project 3: EventIQ -->
+            <div class="recruiter-card">
+              <span class="project-category-tag" style="font-size:0.75rem;">Web Application</span>
+              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">EventIQ</h3>
+              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+                Modern event management web platform for attendee coordination, dynamic schedule exploration, and interactive ticket tracking.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button type="button" class="btn-project-analysis" onclick="openProjectModal('eventiq')">
+                  <span>View Detailed Analysis</span>
+                </button>
+                <a href="https://github.com/SoumyadeepPal2007/EventIQ" target="_blank" rel="noopener noreferrer" class="btn-project-github">
+                  <span>Repository</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Recruiter Project 4: Smart Factory Dashboard -->
+            <div class="recruiter-card">
+              <span class="project-category-tag" style="font-size:0.75rem;">Industrial IoT &amp; Analytics</span>
+              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">Smart Factory Dashboard</h3>
+              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+                Real-time industrial telemetry dashboard for monitoring OEE, temperature feeds, and manufacturing uptime with interactive visualization.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Python</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button type="button" class="btn-project-analysis" onclick="openProjectModal('smartfactory')">
+                  <span>View Detailed Analysis</span>
+                </button>
+                <a href="https://github.com/SoumyadeepPal2007/smart-factory-dashboard" target="_blank" rel="noopener noreferrer" class="btn-project-github">
+                  <span>Repository</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Recruiter Project 5: WallBot -->
+            <div class="recruiter-card">
+              <span class="project-category-tag" style="font-size:0.75rem;">Robotics &amp; IoT</span>
+              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">WallBot: Painting Robot</h3>
+              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+                Wall-climbing robotic system adhering to vertical surfaces to automate high-altitude paint applications with sensor-driven controls.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">C</span>
+                <span class="tech-tag">Robotics</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button type="button" class="btn-project-analysis" onclick="openProjectModal('wallbot')">
+                  <span>View Detailed Analysis</span>
+                </button>
+                <a href="https://github.com/SoumyadeepPal2007/WallBot" target="_blank" rel="noopener noreferrer" class="btn-project-github">
+                  <span>Repository</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Recruiter Project 6: Train Reservation System -->
+            <div class="recruiter-card">
+              <span class="project-category-tag" style="font-size:0.75rem;">Systems &amp; Database Design</span>
+              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">Train Reservation System</h3>
+              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+                Deterministic berth allocation engine with PNR transaction management, route scheduling, and ACID relational database integrity.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
+                <span class="tech-tag">C</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button type="button" class="btn-project-analysis" onclick="openProjectModal('trainreservation')">
+                  <span>View Detailed Analysis</span>
+                </button>
+                <a href="https://github.com/SoumyadeepPal2007/train-reservation-system" target="_blank" rel="noopener noreferrer" class="btn-project-github">
+                  <span>Repository</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Education -->
+        <section class="recruiter-section">
+          <h2 class="recruiter-section-title">4. Education</h2>
+          <div class="recruiter-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:0.75rem;">
+              <div>
+                <h3 style="font-size:1.2rem;font-weight:800;color:#0f172a;">Bachelor of Technology (B.Tech) — Information Technology</h3>
+                <p style="color:#1d4ed8;font-weight:600;">Institute of Engineering and Management (IEM), Kolkata</p>
+              </div>
+              <span class="achievement-badge-pill" style="margin:0;">2023 – 2027 (Expected)</span>
+            </div>
+            <p style="font-size:0.92rem;color:#475569;line-height:1.65;">
+              Second-year undergraduate. Core subjects include Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems (MySQL), Computer Organization &amp; Architecture, and Operating Systems.
+            </p>
+          </div>
+        </section>
+
+        <!-- 5. Hackathons Participated -->
+        <section class="recruiter-section">
+          <h2 class="recruiter-section-title">5. Hackathons &amp; Honors</h2>
+          <div class="recruiter-card">
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.25rem;">
+              <li style="border-left:3px solid #1d4ed8;padding-left:1rem;">
+                <h4 style="font-size:1.05rem;font-weight:700;color:#0f172a;margin-bottom:0.25rem;">NPTEL Elite + Silver Certification (Top 5% Nationally)</h4>
+                <p style="font-size:0.9rem;color:#475569;">Ranked in the top 5% nationally in rigorous NPTEL certification examination conducted by IIT.</p>
+              </li>
+              <li style="border-left:3px solid #1d4ed8;padding-left:1rem;">
+                <h4 style="font-size:1.05rem;font-weight:700;color:#0f172a;margin-bottom:0.25rem;">Hackathons &amp; Competitive Engineering Sprints</h4>
+                <p style="font-size:0.9rem;color:#475569;">Collaborative participant in multi-hour rapid prototyping hackathons delivering software solutions under real-time deadline constraints.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 6. Technical Skills -->
+        <section class="recruiter-section">
+          <h2 class="recruiter-section-title">6. Technical Skills</h2>
+          <div class="recruiter-card">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
+              <div>
+                <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">Programming Languages</h4>
+                <p style="font-size:0.9rem;color:#334155;">C, C++, Java, Python, JavaScript (ES6+)</p>
+              </div>
+              <div>
+                <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">Core Computer Science</h4>
+                <p style="font-size:0.9rem;color:#334155;">Data Structures &amp; Algorithms (C++), Object-Oriented Programming, DBMS</p>
+              </div>
+              <div>
+                <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">Web &amp; Database</h4>
+                <p style="font-size:0.9rem;color:#334155;">HTML5, CSS3, Vanilla JS, MySQL, Relational Database Modeling</p>
+              </div>
+              <div>
+                <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">AI &amp; Developer Tools</h4>
+                <p style="font-size:0.9rem;color:#334155;">Prompt Engineering, AI/ML Concepts, NumPy, Pandas, Matplotlib, Git &amp; GitHub, VS Code</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Contact Information -->
+        <section class="recruiter-section">
+          <h2 class="recruiter-section-title">7. Contact Information</h2>
+          <div class="recruiter-card">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
+              <div>
+                <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:#64748b;display:block;margin-bottom:0.25rem;">Email Address</span>
+                <a href="mailto:soumyadeepp269@gmail.com" style="color:#1d4ed8;font-weight:600;text-decoration:none;">soumyadeepp269@gmail.com</a>
+              </div>
+              <div>
+                <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:#64748b;display:block;margin-bottom:0.25rem;">WhatsApp Direct</span>
+                <a href="https://wa.me/916291067449" target="_blank" rel="noopener noreferrer" style="color:#25d366;font-weight:600;text-decoration:none;">+91 6291067449</a>
+              </div>
+              <div>
+                <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:#64748b;display:block;margin-bottom:0.25rem;">GitHub Profile</span>
+                <a href="https://github.com/SoumyadeepPal2007" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;text-decoration:none;">github.com/SoumyadeepPal2007</a>
+              </div>
+              <div>
+                <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:#64748b;display:block;margin-bottom:0.25rem;">LinkedIn Profile</span>
+                <a href="https://www.linkedin.com/in/soumyadeep-pal-885140361/" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;text-decoration:none;">linkedin.com/in/soumyadeep-pal...</a>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
+
   </main>
 
   <!-- ======================================================================
-       FOOTER
+       MODALS & OVERLAYS (Root-level)
        ====================================================================== -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="brand-monogram" style="margin-bottom: 0.75rem;">SP</div>
-          <h4 style="font-size: 1.25rem; font-weight: 800;">Soumyadeep Pal</h4>
-          <p class="brand-role" style="font-size: 0.95rem; color: var(--accent-primary); font-weight: 600; margin-top: 0.25rem;">
-            B.Tech IT Student | Aspiring Software Developer | AI &amp; ML Enthusiast
-          </p>
-          <p class="footer-bio">
-            Second-year Information Technology student at IEM Kolkata. Dedicated to software development, DSA in C++, and actively exploring AI &amp; Machine Learning.
-          </p>
-        </div>
 
-        <div class="footer-links-group">
-          <!-- Section Links -->
-          <div>
-            <h5 class="footer-column-title">Navigation</h5>
-            <ul class="footer-nav-list">
-              <li><a href="#home" class="footer-nav-link">Home</a></li>
-              <li><a href="#about" class="footer-nav-link">About Me</a></li>
-              <li><a href="#skills" class="footer-nav-link">Skills</a></li>
-              <li><a href="#ai-tools" class="footer-nav-link">AI Tools</a></li>
-              <li><a href="#projects" class="footer-nav-link">Projects</a></li>
-              <li><a href="#achievements" class="footer-nav-link">Achievements</a></li>
-              <li><a href="#education" class="footer-nav-link">Education</a></li>
-              <li><a href="#documents" class="footer-nav-link">Documents</a></li>
-              <li><a href="#contact" class="footer-nav-link">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Social Connections -->
-          <div>
-            <h5 class="footer-column-title">Connect</h5>
-            <ul class="footer-nav-list">
-              <li>
-                <a href="https://github.com/SoumyadeepPal2007" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
-                  GitHub Profile
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/soumyadeep-pal-885140361/" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
-                  LinkedIn Profile
-                </a>
-              </li>
-              <li>
-                <a href="https://youtube.com/@soumyadeeppal7733" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
-                  YouTube Channel
-                </a>
-              </li>
-              <li>
-                <a href="mailto:soumyadeepp269@gmail.com" class="footer-nav-link">
-                  soumyadeepp269@gmail.com
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p class="copyright-text">
-          &copy; <span id="current-year">2026</span> Soumyadeep Pal. All rights reserved.
-        </p>
-
-        <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="Scroll back to top">
-          <span>Back to Top</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="18 15 12 9 6 15"></polyline>
-          </svg>
-        </button>
+  <!-- 1. Introduction Video Modal Overlay -->
+  <div class="video-modal-overlay" id="video-modal-overlay" role="dialog" aria-modal="true" aria-label="Introduction Video">
+    <div class="video-modal">
+      <button type="button" class="video-modal-close" id="video-modal-close-btn" aria-label="Close introduction video">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="video-wrapper">
+        <video id="intro-video" controls playsinline preload="metadata">
+          <source src="assets/videos/introduction.mp4" type="video/mp4">
+          Your browser does not support the HTML5 video player.
+        </video>
       </div>
     </div>
-  </footer>
+  </div>
 
-  <!-- Toast Notification for Clipboard -->
+  <!-- 2. Project Detailed Analysis Modal Overlay -->
+  <div class="project-modal-overlay" id="project-modal-overlay" role="dialog" aria-modal="true" aria-label="Project Detailed Analysis" style="display: none;">
+    <!-- Populated dynamically via openProjectModal(key) in script.js -->
+  </div>
+
+  <!-- 3. Toast Notification for Clipboard -->
   <div class="toast-notification" id="toast-notification" role="status" aria-live="polite">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
       <polyline points="22 4 12 14.01 9 11.01"></polyline>
     </svg>

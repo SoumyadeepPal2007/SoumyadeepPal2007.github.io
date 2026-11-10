@@ -8,7 +8,7 @@
 /* --- CSS Variables & Design Tokens (Modern Executive Palette) --- */
 :root,
 [data-theme="light"] {
-  /* Primary background: Soft off-white / very light grey */
+  /* Primary background: Soft off-white */
   --bg-primary: #f8fafc;
   /* Secondary background: Light blue-grey for balanced alternating sections */
   --bg-secondary: #eef4f8;
@@ -17,12 +17,13 @@
   /* Cards: Crisp white with subtle soft elevation */
   --bg-card: #ffffff;
   --bg-card-hover: #ffffff;
-  --bg-glass: rgba(248, 250, 252, 0.9);
+  --bg-glass: rgba(248, 250, 252, 0.92);
 
-  --border-subtle: rgba(203, 213, 225, 0.8);
+  --border-subtle: rgba(203, 213, 225, 0.85);
   --border-medium: rgba(148, 163, 184, 0.5);
   /* Primary accent: Royal blue border highlight */
-  --border-highlight: rgba(29, 78, 216, 0.35);
+  --border-highlight: rgba(29, 78, 216, 0.4);
+  --border-gold: rgba(217, 119, 6, 0.35);
 
   /* Text: Dark navy / charcoal for high readability */
   --text-primary: #0f172a;
@@ -30,14 +31,16 @@
   --text-muted: #64748b;
   --text-inverse: #ffffff;
 
-  /* Accents: Royal Blue and Teal */
+  /* Accents: Royal Blue and Subtle Gold Highlights */
   --accent-primary: #1d4ed8;
   --accent-primary-hover: #1e40af;
   --accent-secondary: #0d9488;
   --accent-secondary-hover: #0f766e;
+  --accent-gold: #d97706;
+  --accent-gold-hover: #b45309;
   --accent-tertiary: #2563eb;
-  /* Buttons: Elegant blue gradients */
-  --accent-gradient: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0d9488 100%);
+  /* Buttons: Royal blue and gold highlights gradient */
+  --accent-gradient: linear-gradient(135deg, #1d4ed8 0%, #2563eb 55%, #d97706 100%);
   --accent-glow: rgba(29, 78, 216, 0.18);
   --success-color: #059669;
   --warning-color: #d97706;
@@ -65,30 +68,39 @@
   --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Dark Theme Variables (Preserved for toggle) --- */
+/* --- Dark Theme Variables (Deep Navy Blue, Dark Blue Surfaces, Subtle Red Corner Tints, Golden Accents) --- */
 [data-theme="dark"] {
-  --bg-primary: #0b1120;
-  --bg-secondary: #0f172a;
-  --bg-surface: #1e293b;
-  --bg-surface-elevated: #283548;
-  --bg-card: rgba(30, 41, 59, 0.88);
-  --bg-card-hover: rgba(39, 52, 75, 0.95);
-  --bg-glass: rgba(11, 17, 32, 0.9);
+  /* Deep navy blue background */
+  --bg-primary: #060d1b;
+  --bg-secondary: #0a1426;
+  /* Dark blue surfaces */
+  --bg-surface: #0e1d35;
+  --bg-surface-elevated: #142542;
+  --bg-card: rgba(14, 29, 53, 0.92);
+  --bg-card-hover: rgba(19, 38, 70, 0.96);
+  --bg-glass: rgba(7, 15, 30, 0.88);
 
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-medium: rgba(255, 255, 255, 0.18);
-  --border-highlight: rgba(59, 130, 246, 0.45);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-medium: rgba(212, 175, 55, 0.26);
+  --border-highlight: rgba(59, 130, 246, 0.5);
+  --border-gold: rgba(229, 193, 88, 0.45);
 
+  /* White and light-grey typography */
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  --text-inverse: #0b1120;
+  --text-inverse: #060d1b;
 
   --accent-primary: #3b82f6;
   --accent-primary-hover: #60a5fa;
   --accent-secondary: #14b8a6;
   --accent-tertiary: #818cf8;
-  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #14b8a6 100%);
+  /* Elegant golden accents */
+  --accent-gold: #e5c158;
+  --accent-gold-hover: #f3d178;
+  /* Subtle red tints around selected corners */
+  --red-tint: rgba(220, 38, 38, 0.18);
+  --accent-gradient: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #e5c158 100%);
   --accent-glow: rgba(59, 130, 246, 0.25);
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
