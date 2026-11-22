@@ -2080,17 +2080,19 @@ html[data-active-mode="recruiter"] #recruiter-mode {
   display: block !important;
 }
 
-/* Hide normal section anchor links in Terminal & Recruiter modes */
-html[data-active-mode="terminal"] .nav-links,
-html[data-active-mode="recruiter"] .nav-links,
-html[data-active-mode="terminal"] .mobile-toggle-btn,
-html[data-active-mode="recruiter"] .mobile-toggle-btn {
-  display: none !important;
+/* Hide section anchor links on desktop in Terminal & Recruiter modes */
+@media (min-width: 1081px) {
+  html[data-active-mode="terminal"] .nav-links-list,
+  html[data-active-mode="recruiter"] .nav-links-list {
+    display: none !important;
+  }
 }
 
-/* Hide theme toggle in recruiter mode */
+/* Hide theme toggle in recruiter mode (both desktop & mobile) */
 html[data-active-mode="recruiter"] #theme-toggle-btn,
-[data-active-mode="recruiter"] #theme-toggle-btn {
+[data-active-mode="recruiter"] #theme-toggle-btn,
+html[data-active-mode="recruiter"] .mobile-theme-wrapper,
+[data-active-mode="recruiter"] .mobile-theme-wrapper {
   display: none !important;
 }
 
@@ -2352,4 +2354,321 @@ html[data-active-mode="recruiter"] #theme-toggle-btn,
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+}
+
+/* ==========================================================================
+   DESKTOP DOCK & MOBILE NAVIGATION REDESIGN
+   ========================================================================== */
+
+/* Desktop Dock Layout */
+.navbar {
+  width: min(1380px, calc(100% - 24px));
+  padding: 0.4rem 1rem;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.nav-links-list {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.55rem;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-primary);
+  background: var(--bg-surface-elevated);
+}
+
+[data-theme="dark"] .nav-link.active {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+/* Desktop Mode Switcher */
+.desktop-mode-switcher .mode-btn {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.76rem;
+}
+
+/* Hide mobile drawer controls on desktop */
+@media (min-width: 1081px) {
+  .mobile-menu-controls {
+    display: none !important;
+  }
+  .mobile-toggle-btn {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE HAMBURGER MENU REDESIGN (Screen <= 1080px)
+   ========================================================================== */
+@media (max-width: 1080px) {
+  /* Hide desktop horizontal switcher and desktop theme button in the top bar */
+  .desktop-mode-switcher,
+  .desktop-theme-btn {
+    display: none !important;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .mobile-toggle-btn {
+    display: flex !important;
+    flex-shrink: 0;
+  }
+
+  /* Mobile Full-Screen Dropdown Menu */
+  .nav-links {
+    position: fixed !important;
+    top: 76px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+    max-height: calc(100vh - 92px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    background: #0f172a !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 20px !important;
+    padding: 1.25rem 1rem !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(56, 189, 248, 0.15) !important;
+    backdrop-filter: blur(28px) !important;
+    -webkit-backdrop-filter: blur(28px) !important;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1050 !important;
+  }
+
+  [data-theme="light"] .nav-links {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .nav-links.open {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    transform: translateY(0) !important;
+  }
+
+  .nav-links-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.25rem !important;
+  }
+
+  .nav-link {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.92rem !important;
+    border-radius: 10px !important;
+    color: var(--text-primary) !important;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(56, 189, 248, 0.12) !important;
+    color: #38bdf8 !important;
+  }
+
+  /* Mobile Controls Section */
+  .mobile-menu-controls {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .mobile-menu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+  }
+
+  [data-theme="light"] .mobile-menu-divider {
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .mobile-menu-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    padding-left: 0.25rem;
+  }
+
+  /* Vertical Mode Switcher */
+  .mobile-modes-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .mobile-mode-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    color: var(--text-primary);
+  }
+
+  [data-theme="light"] .mobile-mode-item {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+
+  .mobile-mode-item.active {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.18), rgba(124, 58, 237, 0.18)) !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.15);
+  }
+
+  .mode-badge-icon {
+    font-size: 1.15rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mode-text-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mode-title-text {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .mode-desc-text {
+    font-size: 0.72rem;
+    color: #94a3b8;
+  }
+
+  .mobile-mode-item.active .mode-title-text {
+    color: #38bdf8;
+  }
+
+  /* Mobile Theme Button */
+  .mobile-theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    width: 100%;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  [data-theme="light"] .mobile-theme-btn {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+
+  .mobile-theme-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #fbbf24;
+  }
+
+  .theme-icon-container {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+}
+
+/* ==========================================================================
+   ELEGANT "PERSONAL USE ONLY" FOOTER BUTTON
+   ========================================================================== */
+.footer-personal-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.btn-personal-use-only {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-personal-use-only:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
 }

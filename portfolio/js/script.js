@@ -47,21 +47,42 @@ document.addEventListener('DOMContentLoaded', () => {
    - Toggles data-theme attribute on <html>
    ============================================================ */
 function initTheme() {
-  const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  const storedTheme    = localStorage.getItem('portfolio-theme');
+  const themeToggleBtn       = document.getElementById('theme-toggle-btn');
+  const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle-btn');
+  const mobileThemeText      = document.getElementById('mobile-theme-text');
+  const storedTheme          = localStorage.getItem('portfolio-theme') || 'dark';
 
-  // Respect saved preference; default to 'light'
-  document.documentElement.setAttribute('data-theme', storedTheme || 'light');
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'light';
-      const next    = current === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('portfolio-theme', next);
-      themeToggleBtn.setAttribute('aria-label', `Switch to ${current} theme`);
-    });
+  function updateThemeUI(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const isDark = (theme === 'dark');
+    if (themeToggleBtn) {
+      themeToggleBtn.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
+    }
+    if (mobileThemeText) {
+      mobileThemeText.textContent = isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme';
+    }
   }
+
+  updateThemeUI(storedTheme);
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next    = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('portfolio-theme', next);
+    updateThemeUI(next);
+  }
+
+  themeToggleBtn?.addEventListener('click', toggleTheme);
+  mobileThemeToggleBtn?.addEventListener('click', () => {
+    toggleTheme();
+    // Close mobile menu after selecting theme
+    const navLinks = document.getElementById('nav-links');
+    const mobileToggle = document.getElementById('mobile-toggle-btn');
+    mobileToggle?.classList.remove('open');
+    mobileToggle?.setAttribute('aria-expanded', 'false');
+    navLinks?.classList.remove('open');
+    document.body.style.overflow = '';
+  });
 }
 
 /* ============================================================
@@ -122,10 +143,14 @@ function applyMode(mode, animate) {
   // Set active mode on root for CSS targeting
   document.documentElement.setAttribute('data-active-mode', mode);
 
-  // Requirement 3 & 6: Hide Dark/Light theme selector in Recruiter Mode only
+  // Requirement 3 & 6: Hide Dark/Light theme selector in Recruiter Mode only (both desktop & mobile)
   const themeToggle = document.getElementById('theme-toggle-btn');
   if (themeToggle) {
     themeToggle.style.display = (mode === 'recruiter') ? 'none' : '';
+  }
+  const mobileThemeSec = document.querySelector('.mobile-theme-wrapper');
+  if (mobileThemeSec) {
+    mobileThemeSec.style.display = (mode === 'recruiter') ? 'none' : '';
   }
 
   // Lazy-initialize terminal on first switch
@@ -166,6 +191,14 @@ function initNavigation() {
           }, 80);
         }
       }
+    });
+  });
+
+  // Close mobile menu when selecting any mode from the menu
+  const mobileModeBtns = document.querySelectorAll('.mobile-mode-item');
+  mobileModeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      closeMenu();
     });
   });
 
