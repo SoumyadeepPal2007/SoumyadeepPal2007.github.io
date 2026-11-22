@@ -135,6 +135,15 @@ function applyMode(mode, animate) {
     btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
   });
 
+  // Set active mode on root for CSS targeting
+  document.documentElement.setAttribute('data-active-mode', mode);
+
+  // Requirement 6: Hide Dark/Light theme selector in Recruiter Mode only
+  const themeToggle = document.getElementById('theme-toggle-btn');
+  if (themeToggle) {
+    themeToggle.style.display = (mode === 'recruiter') ? 'none' : '';
+  }
+
   // Lazy-initialize terminal on first switch
   if (mode === 'terminal' && !terminalInitialized) {
     // Slight delay to let the container become visible first
@@ -644,10 +653,11 @@ const projectsData = {
     title:        'EduPilot AI',
     problem:      'Students struggle with personalized learning paths and intelligent academic guidance in traditional education platforms.',
     overview:     'A collaborative AI-powered educational web platform designed to streamline student learning journeys, offer interactive curriculum navigation, and assist learners with intelligent academic guidance.',
-    tech:         ['Collaborative', 'Artificial Intelligence', 'JavaScript', 'Web Development', 'Vercel'],
-    contribution: 'Collaborative project. Participated in frontend development, UI design, and AI feature integration.',
-    challenges:   'Designing an intuitive UI that adapts to different learning styles and integrating AI recommendations seamlessly.',
-    solutions:    'Implemented a component-based frontend with AI recommendation modules deployed on Vercel.',
+    tech:         ['Collaborative', 'Backend Development', 'Artificial Intelligence', 'JavaScript / React', 'Vercel Preview'],
+    contribution: 'Collaborative project. I worked on the backend part of EduPilot AI, responsible for server-side architecture, API endpoints, and core backend logic.',
+    deploymentStatus: 'Deployment: Not Yet Done',
+    challenges:   'Designing reliable backend endpoints and integrating AI recommendation models cleanly with frontend components.',
+    solutions:    'Implemented structured server-side handlers and API endpoints. Currently hosted in preview stage (Deployment: Not Yet Done).',
     demo:         'https://edupilot-ai-tau.vercel.app/',
     github:       'https://github.com/SubhasisRoy578/EduPilot-AI'
   },
@@ -890,15 +900,16 @@ function initVideoModal() {
    - Email form: #email-contact-form via FormSubmit AJAX
    ============================================================ */
 function initContactOptions() {
-  const emailBtn      = document.querySelector('.contact-option-btn.email-btn');
-  const whatsappBtn   = document.querySelector('.contact-option-btn.whatsapp-btn');
-  const emailPanel    = document.querySelector('.email-form-panel');
-  const whatsappPanel = document.querySelector('.whatsapp-panel');
-  const emailForm     = document.getElementById('email-contact-form');
+  const emailBtn        = document.querySelector('.contact-option-btn.email-btn');
+  const whatsappBtn     = document.querySelector('.contact-option-btn.whatsapp-btn');
+  const emailPanel      = document.querySelector('.email-form-panel');
+  const whatsappPanel   = document.querySelector('.whatsapp-panel');
+  const emailForm       = document.getElementById('email-contact-form');
+  const whatsappForm    = document.getElementById('whatsapp-contact-form');
 
   function showPanel(show, hide, activeBtn, inactiveBtn) {
-    if (show)       { show.style.display = 'block'; }
-    if (hide)       { hide.style.display = 'none'; }
+    if (show) { show.style.display = 'block'; }
+    if (hide) { hide.style.display = 'none'; }
     activeBtn?.classList.add('active');
     inactiveBtn?.classList.remove('active');
   }
@@ -911,80 +922,134 @@ function initContactOptions() {
     showPanel(whatsappPanel, emailPanel, whatsappBtn, emailBtn);
   });
 
-  // ---- Email form AJAX (2-field: email + message) ----
-  if (!emailForm) return;
+  // ---- OPTION A: Email form AJAX (5-field: name, email, designation, subject, message) ----
+  if (emailForm) {
+    const successAlert = emailForm.querySelector('.contact-success-alert');
+    const errorAlert   = emailForm.querySelector('.contact-error-alert');
+    const submitBtn    = emailForm.querySelector('[type="submit"]');
 
-  const successAlert = emailForm.querySelector('.contact-success-alert');
-  const errorAlert   = emailForm.querySelector('.contact-error-alert');
-  const submitBtn    = emailForm.querySelector('[type="submit"]');
+    emailForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (submitBtn?.disabled) return;
 
-  emailForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    if (submitBtn?.disabled) return;
+      if (successAlert) successAlert.style.display = 'none';
+      if (errorAlert)   errorAlert.style.display   = 'none';
 
-    hideContactAlerts();
+      const nameVal   = emailForm.querySelector('input[name="name"]')?.value.trim() || '';
+      const emailVal  = emailForm.querySelector('input[name="email"]')?.value.trim() || '';
+      const desigVal  = emailForm.querySelector('input[name="designation"]')?.value.trim() || '';
+      const subjVal   = emailForm.querySelector('input[name="subject"]')?.value.trim() || '';
+      const msgVal    = emailForm.querySelector('textarea[name="message"]')?.value.trim() || '';
 
-    const emailInput   = emailForm.querySelector('input[name="email"]');
-    const messageInput = emailForm.querySelector('textarea[name="message"]');
-
-    const emailVal   = emailInput?.value.trim() || '';
-    const messageVal = messageInput?.value.trim() || '';
-
-    // Basic validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailVal || !emailRegex.test(emailVal)) {
-      showContactAlert(errorAlert, 'Please enter a valid email address.');
-      emailInput?.focus();
-      return;
-    }
-    if (!messageVal || messageVal.length < 5) {
-      showContactAlert(errorAlert, 'Please write a message (at least 5 characters).');
-      messageInput?.focus();
-      return;
-    }
-
-    // Set loading state
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-
-    try {
-      const formData = new FormData();
-      formData.append('email',    emailVal);
-      formData.append('_replyto', emailVal);
-      formData.append('message',  messageVal);
-      formData.append('_subject', 'Portfolio Contact - Soumyadeep Pal');
-
-      const response = await fetch('https://formsubmit.co/ajax/soumyadeepp269@gmail.com', {
-        method:  'POST',
-        headers: { 'Accept': 'application/json' },
-        body:    formData
-      });
-
-      const result = await response.json();
-
-      if (response.ok && (result.success === 'true' || result.success === true)) {
-        showContactAlert(successAlert, '✅ Message sent! Soumyadeep will reply to your email soon.');
-        emailForm.reset();
-      } else {
-        showContactAlert(errorAlert, result.message || 'Could not send message. Please try directly at soumyadeepp269@gmail.com.');
+      if (!nameVal) {
+        showContactAlert(errorAlert, 'Please enter your name.');
+        emailForm.querySelector('input[name="name"]')?.focus();
+        return;
       }
-    } catch (err) {
-      console.error('Contact Options Form Error:', err);
-      showContactAlert(errorAlert, 'Network error. Please email directly: soumyadeepp269@gmail.com');
-    } finally {
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Message'; }
-    }
-  });
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailVal || !emailRegex.test(emailVal)) {
+        showContactAlert(errorAlert, 'Please enter a valid email address.');
+        emailForm.querySelector('input[name="email"]')?.focus();
+        return;
+      }
+      if (!desigVal) {
+        showContactAlert(errorAlert, 'Please enter your designation (e.g. Recruiter, Engineer, Student).');
+        emailForm.querySelector('input[name="designation"]')?.focus();
+        return;
+      }
+      if (!subjVal) {
+        showContactAlert(errorAlert, 'Please enter a subject.');
+        emailForm.querySelector('input[name="subject"]')?.focus();
+        return;
+      }
+      if (!msgVal || msgVal.length < 5) {
+        showContactAlert(errorAlert, 'Please write your message (at least 5 characters).');
+        emailForm.querySelector('textarea[name="message"]')?.focus();
+        return;
+      }
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+      try {
+        const formData = new FormData();
+        formData.append('name',        nameVal);
+        formData.append('email',       emailVal);
+        formData.append('_replyto',    emailVal);
+        formData.append('designation', desigVal);
+        formData.append('_subject',    `[Portfolio Contact] ${subjVal} - ${nameVal}`);
+        formData.append('message',     `Name: ${nameVal}\nEmail: ${emailVal}\nDesignation: ${desigVal}\nSubject: ${subjVal}\n\nMessage:\n${msgVal}`);
+
+        const response = await fetch('https://formsubmit.co/ajax/soumyadeepp269@gmail.com', {
+          method:  'POST',
+          headers: { 'Accept': 'application/json' },
+          body:    formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok && (result.success === 'true' || result.success === true)) {
+          showContactAlert(successAlert, '✅ Message sent successfully! Soumyadeep will reply to your email soon.');
+          emailForm.reset();
+        } else {
+          showContactAlert(errorAlert, result.message || 'Could not send message. Please try directly at soumyadeepp269@gmail.com.');
+        }
+      } catch (err) {
+        console.error('Contact Options Form Error:', err);
+        showContactAlert(errorAlert, 'Network error. Please email directly: soumyadeepp269@gmail.com');
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Message'; }
+      }
+    });
+  }
+
+  // ---- OPTION B: WhatsApp form (3-field: name, designation, message) ----
+  if (whatsappForm) {
+    const waErrorAlert   = whatsappForm.querySelector('.whatsapp-error-alert');
+    const waSuccessAlert = whatsappForm.querySelector('.whatsapp-success-alert');
+
+    whatsappForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      if (waErrorAlert)   waErrorAlert.style.display   = 'none';
+      if (waSuccessAlert) waSuccessAlert.style.display = 'none';
+
+      const nameVal  = whatsappForm.querySelector('input[name="whatsapp_name"]')?.value.trim() || '';
+      const desigVal = whatsappForm.querySelector('input[name="whatsapp_designation"]')?.value.trim() || '';
+      const msgVal   = whatsappForm.querySelector('textarea[name="whatsapp_message"]')?.value.trim() || '';
+
+      if (!nameVal) {
+        showContactAlert(waErrorAlert, 'Please enter your name.');
+        whatsappForm.querySelector('input[name="whatsapp_name"]')?.focus();
+        return;
+      }
+      if (!desigVal) {
+        showContactAlert(waErrorAlert, 'Please enter your designation.');
+        whatsappForm.querySelector('input[name="whatsapp_designation"]')?.focus();
+        return;
+      }
+      if (!msgVal || msgVal.length < 3) {
+        showContactAlert(waErrorAlert, 'Please write your message.');
+        whatsappForm.querySelector('textarea[name="whatsapp_message"]')?.focus();
+        return;
+      }
+
+      // Format exactly as requested:
+      // Name: [Name]
+      // Designation: [Designation]
+      // Message: [Message]
+      const formattedText = `Name: ${nameVal}\nDesignation: ${desigVal}\nMessage: ${msgVal}`;
+      const whatsappUrl = `https://wa.me/916291067449?text=${encodeURIComponent(formattedText)}`;
+
+      showContactAlert(waSuccessAlert, 'Opening WhatsApp chat in a new tab with your formatted message...');
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+  }
 
   function showContactAlert(el, message) {
     if (!el) return;
     el.textContent = message;
     el.style.display = 'block';
     el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function hideContactAlerts() {
-    if (successAlert) successAlert.style.display = 'none';
-    if (errorAlert)   errorAlert.style.display   = 'none';
   }
 }
 

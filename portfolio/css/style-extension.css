@@ -245,12 +245,12 @@
 .video-trigger-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: rgba(220, 38, 38, 0.1);
-  border: 2px solid rgba(220, 38, 38, 0.4);
+  gap: 0.85rem;
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%);
+  border: 2px solid #10b981;
   border-radius: var(--radius-lg);
-  color: #dc2626;
+  color: #10b981;
   font-weight: 700;
   font-size: 1.05rem;
   cursor: pointer;
@@ -258,22 +258,25 @@
 }
 
 .video-trigger-btn:hover {
-  background: rgba(220, 38, 38, 0.18);
-  border-color: #dc2626;
+  background: linear-gradient(135deg, #10b981 0%, #d97706 100%);
+  border-color: #f59e0b;
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.2);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
 }
 
-.video-trigger-btn .play-icon {
-  width: 44px;
-  height: 44px;
-  background: #dc2626;
+.video-trigger-btn .play-icon,
+.video-trigger-btn .play-icon-gold-green {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #10b981, #f59e0b);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 .video-modal-overlay {
@@ -1778,4 +1781,277 @@ body {
   font-size: 0.95rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   UI IMPROVEMENTS: SOCIAL BUTTONS, INTRO VIDEO GOLD-GREEN, CONTACT FORMS, & RECRUITER THEME TOGGLE
+   ========================================================================== */
+
+/* 1. Recruiter Mode Theme Toggle Hiding */
+[data-active-mode="recruiter"] #theme-toggle-btn,
+body[data-mode="recruiter"] #theme-toggle-btn,
+html[data-active-mode="recruiter"] #theme-toggle-btn {
+  display: none !important;
+}
+
+/* 2. Hero Social Links (Horizontal Row Desktop, 2x2 Grid Mobile) */
+.hero-socials {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.social-links-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.social-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0 1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+  background: var(--bg-surface, rgba(255, 255, 255, 0.05));
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.social-btn-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
+}
+
+.social-btn-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.social-btn:hover .social-btn-icon {
+  transform: scale(1.15);
+}
+
+.social-btn-github:hover {
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+}
+
+.social-btn-linkedin:hover {
+  border-color: #0a66c2;
+  background: rgba(10, 102, 194, 0.12);
+  color: #38bdf8;
+}
+
+.social-btn-youtube:hover {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.social-btn-email:hover {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+@media (max-width: 640px) {
+  .social-links-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .social-btn {
+    width: 100%;
+    height: 44px;
+    padding: 0 0.75rem;
+  }
+}
+
+/* 3. Introduction Video Immediately After About Me (Golden-Green Palette) */
+.intro-video-callout {
+  padding: 2rem 0;
+  position: relative;
+}
+
+.intro-video-box {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(217, 119, 6, 0.08) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-xl, 16px);
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-video-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #f59e0b, #10b981);
+}
+
+.intro-video-info {
+  flex: 1;
+}
+
+.intro-video-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 9999px;
+  color: #10b981;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.intro-tag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+  animation: pulse 1.8s infinite;
+}
+
+.intro-video-heading {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.intro-video-subtext {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0;
+}
+
+.intro-gold-green-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(217, 119, 6, 0.18) 100%);
+  border: 2px solid #10b981;
+  border-radius: var(--radius-lg, 12px);
+  color: #10b981;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+}
+
+.intro-gold-green-btn:hover {
+  background: linear-gradient(135deg, #10b981 0%, #d97706 100%);
+  border-color: #f59e0b;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+}
+
+.play-icon-gold-green {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #10b981, #f59e0b);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .intro-video-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+  .intro-gold-green-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 4. Deployment Status Badge */
+.project-status-badge.status-pending {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.45);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+[data-theme="light"] .project-status-badge.status-pending {
+  background: rgba(234, 179, 8, 0.2);
+  color: #b45309;
+  border-color: rgba(234, 179, 8, 0.6);
+}
+
+/* 5. Contact Form Layouts (Email Me & WhatsApp Me) */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.whatsapp-panel {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  text-align: left;
 }
