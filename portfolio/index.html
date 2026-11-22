@@ -1199,7 +1199,7 @@
 
           <!-- OPTION 2: WhatsApp Me Panel (3 Fields) -->
           <div class="contact-panel whatsapp-panel" id="whatsapp-panel" style="display:none;">
-            <form id="whatsapp-contact-form" class="clean-form" novalidate>
+            <form id="whatsapp-contact-form" class="clean-form" novalidate onsubmit="return false;" action="https://wa.me/916291067449" method="GET" target="_blank">
               <div class="form-header-note" style="margin-bottom:1.25rem;text-align:center;">
                 <div class="whatsapp-icon-circle-sm" style="width:48px;height:48px;background:rgba(37,211,102,0.12);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#25d366;margin-bottom:0.5rem;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
@@ -1247,6 +1247,15 @@
               </p>
             </form>
           </div>
+
+          <!-- Send Me a Personal Message CTA (Normal Mode Only) -->
+          <div class="personal-msg-container reveal">
+            <a href="personal-message.html" target="_blank" rel="noopener noreferrer" class="btn-personal-message" aria-label="Send Me a Personal Message">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Send Me a Personal Message</span>
+            </a>
           </div>
         </div>
       </section>
@@ -1262,9 +1271,31 @@
             </p>
           </div>
 
-          <!-- Documents Grid populated dynamically via documentsConfig in script.js -->
+          <!-- Documents Grid -->
           <div class="documents-grid" id="documents-grid">
-            <!-- Dynamically rendered by initDocuments() -->
+            <div class="documents-coming-soon-card reveal">
+              <div class="docs-soon-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="12" y1="18" x2="12" y2="12"></line>
+                  <polyline points="9 15 12 12 15 15"></polyline>
+                </svg>
+              </div>
+              <div class="docs-soon-badge">Coming Soon</div>
+              <h3 class="docs-soon-title">Documents Uploading Soon</h3>
+              <p class="docs-soon-desc">
+                Verified academic transcripts, NPTEL IIT certifications, and technical credentials are being scanned and prepared for public viewing. Check back shortly or request credentials directly.
+              </p>
+              <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+                <a href="#contact" class="btn btn-primary" style="padding:0.6rem 1.4rem;font-size:0.88rem;">
+                  <span>Request via Contact</span>
+                </a>
+                <a href="personal-message.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.6rem 1.4rem;font-size:0.88rem;">
+                  <span>Send Personal Inquiry</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1454,7 +1485,7 @@
          MODE 3: RECRUITER MODE (Minimal, Focused Professional View)
          ================================================================== -->
     <div id="recruiter-mode" class="mode-container" style="display: none;">
-      <div class="recruiter-container">
+      <div class="recruiter-container" style="color:#e2e8f0;">
         <!-- Recruiter Header Card -->
         <header class="recruiter-hero">
           <img src="assets/images/profile.jpg" alt="Soumyadeep Pal" class="recruiter-avatar" onerror="this.onerror=null; this.src='assets/images/profile-placeholder.svg';">
@@ -1510,7 +1541,7 @@
           <h2 class="recruiter-section-title">2. Resume / Curriculum Vitae</h2>
           <div class="recruiter-card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
             <div>
-              <h3 style="font-size:1.15rem;font-weight:700;color:#0f172a;margin-bottom:0.25rem;">Official Technical Resume</h3>
+              <h3 style="font-size:1.15rem;font-weight:700;color:#f8fafc;margin-bottom:0.25rem;">Official Technical Resume</h3>
               <p style="font-size:0.9rem;color:#64748b;">Complete academic record, project summaries, core competencies, and verified credentials.</p>
             </div>
             <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
@@ -1527,8 +1558,8 @@
             <!-- Recruiter Project 1: CropSense AI -->
             <div class="recruiter-card">
               <span class="project-category-tag" style="font-size:0.75rem;">AI in Agriculture</span>
-              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">CropSense AI</h3>
-              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+              <h3 style="font-size:1.25rem;font-weight:800;color:#f8fafc;margin:0.5rem 0;">CropSense AI</h3>
+              <p style="font-size:0.9rem;color:#94a3b8;margin-bottom:1rem;line-height:1.6;">
                 AI agricultural platform for automated crop disease diagnosis, soil health analysis, and region-specific crop recommendations. Deployed on Vercel.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
@@ -1552,8 +1583,8 @@
                 <span class="project-category-tag" style="font-size:0.75rem;">AI Education &bull; Collaborative</span>
                 <span style="display:inline-block;padding:0.2rem 0.6rem;background:rgba(234,179,8,0.15);color:#b45309;border:1px solid rgba(234,179,8,0.4);border-radius:9999px;font-size:0.75rem;font-weight:700;">Deployment: Not Yet Done</span>
               </div>
-              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.25rem 0 0.5rem;">EduPilot AI</h3>
-              <p style="font-size:0.9rem;color:#475569;margin-bottom:0.6rem;line-height:1.6;">
+              <h3 style="font-size:1.25rem;font-weight:800;color:#f8fafc;margin:0.25rem 0 0.5rem;">EduPilot AI</h3>
+              <p style="font-size:0.9rem;color:#94a3b8;margin-bottom:0.6rem;line-height:1.6;">
                 Collaborative AI education platform offering personalized curriculum navigation, dynamic progress tracking, and smart academic assistance.
               </p>
               <p style="font-size:0.85rem;color:#1d4ed8;font-weight:600;margin-bottom:0.85rem;">
@@ -1582,8 +1613,8 @@
             <!-- Recruiter Project 3: EventIQ -->
             <div class="recruiter-card">
               <span class="project-category-tag" style="font-size:0.75rem;">Web Application</span>
-              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">EventIQ</h3>
-              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+              <h3 style="font-size:1.25rem;font-weight:800;color:#f8fafc;margin:0.5rem 0;">EventIQ</h3>
+              <p style="font-size:0.9rem;color:#94a3b8;margin-bottom:1rem;line-height:1.6;">
                 Modern event management web platform for attendee coordination, dynamic schedule exploration, and interactive ticket tracking.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
@@ -1604,8 +1635,8 @@
             <!-- Recruiter Project 4: Smart Factory Dashboard -->
             <div class="recruiter-card">
               <span class="project-category-tag" style="font-size:0.75rem;">Industrial IoT &amp; Analytics</span>
-              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">Smart Factory Dashboard</h3>
-              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+              <h3 style="font-size:1.25rem;font-weight:800;color:#f8fafc;margin:0.5rem 0;">Smart Factory Dashboard</h3>
+              <p style="font-size:0.9rem;color:#94a3b8;margin-bottom:1rem;line-height:1.6;">
                 Real-time industrial telemetry dashboard for monitoring OEE, temperature feeds, and manufacturing uptime with interactive visualization.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
@@ -1626,8 +1657,8 @@
             <!-- Recruiter Project 5: WallBot -->
             <div class="recruiter-card">
               <span class="project-category-tag" style="font-size:0.75rem;">Robotics &amp; IoT</span>
-              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">WallBot: Painting Robot</h3>
-              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+              <h3 style="font-size:1.25rem;font-weight:800;color:#f8fafc;margin:0.5rem 0;">WallBot: Painting Robot</h3>
+              <p style="font-size:0.9rem;color:#94a3b8;margin-bottom:1rem;line-height:1.6;">
                 Wall-climbing robotic system adhering to vertical surfaces to automate high-altitude paint applications with sensor-driven controls.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
@@ -1648,8 +1679,8 @@
             <!-- Recruiter Project 6: Train Reservation System -->
             <div class="recruiter-card">
               <span class="project-category-tag" style="font-size:0.75rem;">Systems &amp; Database Design</span>
-              <h3 style="font-size:1.25rem;font-weight:800;color:#0f172a;margin:0.5rem 0;">Train Reservation System</h3>
-              <p style="font-size:0.9rem;color:#475569;margin-bottom:1rem;line-height:1.6;">
+              <h3 style="font-size:1.25rem;font-weight:800;color:#f8fafc;margin:0.5rem 0;">Train Reservation System</h3>
+              <p style="font-size:0.9rem;color:#94a3b8;margin-bottom:1rem;line-height:1.6;">
                 Deterministic berth allocation engine with PNR transaction management, route scheduling, and ACID relational database integrity.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
@@ -1675,12 +1706,12 @@
           <div class="recruiter-card">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:0.75rem;">
               <div>
-                <h3 style="font-size:1.2rem;font-weight:800;color:#0f172a;">Bachelor of Technology (B.Tech) — Information Technology</h3>
+                <h3 style="font-size:1.2rem;font-weight:800;color:#f8fafc;">Bachelor of Technology (B.Tech) — Information Technology</h3>
                 <p style="color:#1d4ed8;font-weight:600;">Institute of Engineering and Management (IEM), Kolkata</p>
               </div>
               <span class="achievement-badge-pill" style="margin:0;">2025 – 2029 (Second Year)</span>
             </div>
-            <p style="font-size:0.92rem;color:#475569;line-height:1.65;">
+            <p style="font-size:0.92rem;color:#94a3b8;line-height:1.65;">
               Second-year undergraduate. Core subjects include Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems (MySQL), Computer Organization &amp; Architecture, and Operating Systems.
             </p>
           </div>
@@ -1692,13 +1723,13 @@
           <div class="recruiter-card">
             <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.25rem;">
               <li style="border-left:3px solid #1d4ed8;padding-left:1rem;">
-                <h4 style="font-size:1.05rem;font-weight:700;color:#0f172a;margin-bottom:0.25rem;">NPTEL Elite + Silver Certification (Top 5% Nationally)</h4>
-                <p style="font-size:0.9rem;color:#475569;">Ranked in the top 5% nationally in rigorous NPTEL certification examination conducted by IIT.</p>
+                <h4 style="font-size:1.05rem;font-weight:700;color:#f8fafc;margin-bottom:0.25rem;">NPTEL Elite + Silver Certification (Top 5% Nationally)</h4>
+                <p style="font-size:0.9rem;color:#94a3b8;">Ranked in the top 5% nationally in rigorous NPTEL certification examination conducted by IIT.</p>
               </li>
               <li style="border-left:3px solid #1d4ed8;padding-left:1rem;">
-                <h4 style="font-size:1.05rem;font-weight:700;color:#0f172a;margin-bottom:0.25rem;">Hackathons &amp; Competitive Engineering Sprints</h4>
-                <p style="font-size:0.9rem;color:#475569;margin-bottom:0.5rem;">Collaborative participant in rapid prototyping hackathons delivering software solutions under real-time deadline constraints:</p>
-                <ul style="list-style:disc;padding-left:1.25rem;font-size:0.88rem;color:#334155;line-height:1.6;display:flex;flex-direction:column;gap:0.25rem;">
+                <h4 style="font-size:1.05rem;font-weight:700;color:#f8fafc;margin-bottom:0.25rem;">Hackathons &amp; Competitive Engineering Sprints</h4>
+                <p style="font-size:0.9rem;color:#94a3b8;margin-bottom:0.5rem;">Collaborative participant in rapid prototyping hackathons delivering software solutions under real-time deadline constraints:</p>
+                <ul style="list-style:disc;padding-left:1.25rem;font-size:0.88rem;color:#cbd5e1;line-height:1.6;display:flex;flex-direction:column;gap:0.25rem;">
                   <li><strong>IEM Enginious Hackathon</strong> &mdash; On-campus competitive engineering sprint at IEM Kolkata</li>
                   <li><strong>Online Hackathons</strong> &mdash; Virtual technical problem-solving and rapid prototyping hackathons</li>
                 </ul>
@@ -1714,19 +1745,19 @@
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
               <div>
                 <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">Programming Languages</h4>
-                <p style="font-size:0.9rem;color:#334155;">C, C++, Java, Python, JavaScript (ES6+)</p>
+                <p style="font-size:0.9rem;color:#cbd5e1;">C, C++, Java, Python, JavaScript (ES6+)</p>
               </div>
               <div>
                 <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">Core Computer Science</h4>
-                <p style="font-size:0.9rem;color:#334155;">Data Structures &amp; Algorithms (C++), Object-Oriented Programming, DBMS</p>
+                <p style="font-size:0.9rem;color:#cbd5e1;">Data Structures &amp; Algorithms (C++), Object-Oriented Programming, DBMS</p>
               </div>
               <div>
                 <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">Web &amp; Database</h4>
-                <p style="font-size:0.9rem;color:#334155;">HTML5, CSS3, Vanilla JS, MySQL, Relational Database Modeling</p>
+                <p style="font-size:0.9rem;color:#cbd5e1;">HTML5, CSS3, Vanilla JS, MySQL, Relational Database Modeling</p>
               </div>
               <div>
                 <h4 style="font-size:0.95rem;font-weight:700;color:#1d4ed8;margin-bottom:0.4rem;">AI &amp; Developer Tools</h4>
-                <p style="font-size:0.9rem;color:#334155;">Prompt Engineering, AI/ML Concepts, NumPy, Pandas, Matplotlib, Git &amp; GitHub, VS Code</p>
+                <p style="font-size:0.9rem;color:#cbd5e1;">Prompt Engineering, AI/ML Concepts, NumPy, Pandas, Matplotlib, Git &amp; GitHub, VS Code</p>
               </div>
             </div>
           </div>

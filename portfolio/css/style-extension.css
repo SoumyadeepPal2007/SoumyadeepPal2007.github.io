@@ -2055,3 +2055,301 @@ html[data-active-mode="recruiter"] #theme-toggle-btn {
   padding: 2.5rem;
   text-align: left;
 }
+
+/* ==========================================================================
+   STRICT THREE-MODE SEPARATION (Replace View, No Appending, True Screen Isolation)
+   ========================================================================== */
+.mode-container {
+  display: none !important;
+}
+
+.mode-container.active {
+  display: block !important;
+}
+
+html[data-active-mode="normal"] #normal-mode,
+html:not([data-active-mode]) #normal-mode {
+  display: block !important;
+}
+
+html[data-active-mode="terminal"] #terminal-mode {
+  display: block !important;
+}
+
+html[data-active-mode="recruiter"] #recruiter-mode {
+  display: block !important;
+}
+
+/* Hide normal section anchor links in Terminal & Recruiter modes */
+html[data-active-mode="terminal"] .nav-links,
+html[data-active-mode="recruiter"] .nav-links,
+html[data-active-mode="terminal"] .mobile-toggle-btn,
+html[data-active-mode="recruiter"] .mobile-toggle-btn {
+  display: none !important;
+}
+
+/* Hide theme toggle in recruiter mode */
+html[data-active-mode="recruiter"] #theme-toggle-btn,
+[data-active-mode="recruiter"] #theme-toggle-btn {
+  display: none !important;
+}
+
+/* ==========================================================================
+   RECRUITER MODE: DARK / BLACK DEFAULT APPEARANCE
+   Black/deep navy background, professional white typography, blue/gold accents
+   ========================================================================== */
+#recruiter-mode {
+  background: #070a13 !important;
+  color: #f1f5f9 !important;
+  min-height: 100vh;
+}
+
+#recruiter-mode .recruiter-hero {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+#recruiter-mode .recruiter-name {
+  color: #ffffff !important;
+}
+
+#recruiter-mode .recruiter-title {
+  color: #38bdf8 !important;
+}
+
+#recruiter-mode .recruiter-subtitle {
+  color: #94a3b8 !important;
+}
+
+#recruiter-mode .recruiter-avatar {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+}
+
+#recruiter-mode .rec-btn-primary {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+}
+
+#recruiter-mode .rec-btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+#recruiter-mode .rec-btn-secondary {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #fbbf24 !important;
+  border: 1.5px solid #d97706 !important;
+}
+
+#recruiter-mode .rec-btn-secondary:hover {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: #fef08a !important;
+  border-color: #f59e0b !important;
+}
+
+#recruiter-mode .rec-card,
+#recruiter-mode .recruiter-card {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+  color: #cbd5e1 !important;
+}
+
+#recruiter-mode .rec-section-title,
+#recruiter-mode .recruiter-section-title {
+  color: #ffffff !important;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.2) !important;
+}
+
+#recruiter-mode .rec-section-title::before,
+#recruiter-mode .recruiter-section-title::before {
+  background: #38bdf8 !important;
+}
+
+#recruiter-mode h3,
+#recruiter-mode h4 {
+  color: #f8fafc !important;
+}
+
+#recruiter-mode p {
+  color: #94a3b8 !important;
+}
+
+#recruiter-mode .rec-skill-group,
+#recruiter-mode .rec-project-card {
+  background: #1e293b !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+#recruiter-mode .rec-skill-group-title {
+  color: #38bdf8 !important;
+}
+
+#recruiter-mode .rec-skill-tag {
+  background: #0f172a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #e2e8f0 !important;
+}
+
+#recruiter-mode .rec-skill-tag:hover {
+  border-color: #fbbf24 !important;
+  color: #fbbf24 !important;
+}
+
+#recruiter-mode .tech-tag {
+  background: rgba(56, 189, 248, 0.1) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+}
+
+#recruiter-mode .project-category-tag {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+
+#recruiter-mode .achievement-badge-pill {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+#recruiter-mode .btn-project-analysis {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+#recruiter-mode .btn-project-analysis:hover {
+  background: #38bdf8 !important;
+  color: #0f172a !important;
+}
+
+#recruiter-mode .btn-project-github {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+#recruiter-mode .btn-project-github:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+#recruiter-mode .btn-project-demo {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+}
+
+#recruiter-mode .btn-project-demo:hover {
+  background: #f59e0b !important;
+  color: #0f172a !important;
+}
+
+/* ==========================================================================
+   SEE DOCUMENTS: COMING SOON DESIGN
+   ========================================================================== */
+.documents-coming-soon-card {
+  max-width: 650px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1.5px dashed var(--border-subtle);
+  border-radius: var(--radius-xl, 16px);
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.documents-coming-soon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #fbbf24);
+}
+
+.docs-soon-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: #38bdf8;
+}
+
+.docs-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 9999px;
+  color: #fbbf24;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.docs-soon-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.docs-soon-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ==========================================================================
+   PERSONAL MESSAGE BUTTON (NORMAL MODE BOTTOM)
+   ========================================================================== */
+.personal-msg-container {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0 1rem;
+}
+
+.btn-personal-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-full, 9999px);
+  color: #38bdf8;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.btn-personal-message:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+}

@@ -103,32 +103,16 @@ function applyMode(mode, animate) {
   };
   const modeBtns = document.querySelectorAll('.mode-btn[data-mode]');
 
-  // Hide all containers
-  Object.values(containers).forEach(el => {
+  // STRICT SEPARATION: Show ONLY the selected mode, hide the other two completely
+  Object.entries(containers).forEach(([key, el]) => {
     if (!el) return;
-    if (animate) {
-      el.style.transition = 'opacity 0.25s ease';
-      el.style.opacity    = '0';
-      setTimeout(() => { el.style.display = 'none'; el.style.opacity = ''; }, 250);
-    } else {
-      el.style.display = 'none';
-    }
+    const isActive = (key === mode);
+    el.classList.toggle('active', isActive);
+    el.style.display = isActive ? 'block' : 'none';
   });
 
-  // Show the target container
-  const target = containers[mode];
-  if (target) {
-    if (animate) {
-      setTimeout(() => {
-        target.style.display  = 'block';
-        target.style.opacity  = '0';
-        target.style.transition = 'opacity 0.3s ease';
-        requestAnimationFrame(() => { target.style.opacity = '1'; });
-      }, 260);
-    } else {
-      target.style.display = 'block';
-    }
-  }
+  // Always reset scroll to top so switching replaces view rather than landing down
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
   // Update active state on mode buttons
   modeBtns.forEach(btn => {
@@ -138,7 +122,7 @@ function applyMode(mode, animate) {
   // Set active mode on root for CSS targeting
   document.documentElement.setAttribute('data-active-mode', mode);
 
-  // Requirement 6: Hide Dark/Light theme selector in Recruiter Mode only
+  // Requirement 3 & 6: Hide Dark/Light theme selector in Recruiter Mode only
   const themeToggle = document.getElementById('theme-toggle-btn');
   if (themeToggle) {
     themeToggle.style.display = (mode === 'recruiter') ? 'none' : '';
@@ -146,8 +130,7 @@ function applyMode(mode, animate) {
 
   // Lazy-initialize terminal on first switch
   if (mode === 'terminal' && !terminalInitialized) {
-    // Slight delay to let the container become visible first
-    setTimeout(() => { initTerminal(); terminalInitialized = true; }, animate ? 350 : 0);
+    setTimeout(() => { initTerminal(); terminalInitialized = true; }, 50);
   }
 }
 
@@ -1040,8 +1023,20 @@ function initContactOptions() {
       const formattedText = `Name: ${nameVal}\nDesignation: ${desigVal}\nMessage: ${msgVal}`;
       const whatsappUrl = `https://wa.me/916291067449?text=${encodeURIComponent(formattedText)}`;
 
-      showContactAlert(waSuccessAlert, 'Opening WhatsApp chat in a new tab with your formatted message...');
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      // Trigger direct navigation to WhatsApp in a new tab without returning to portfolio
+      const link = document.createElement('a');
+      link.href = whatsappUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      if (waSuccessAlert) {
+        waSuccessAlert.innerHTML = `✅ Opening WhatsApp chat with +91 6291067449...<br><a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="color:#25d366;font-weight:700;text-decoration:underline;margin-top:0.4rem;display:inline-block;">Click here if chat did not open automatically</a>`;
+        waSuccessAlert.style.display = 'block';
+        waSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
   }
 
@@ -1264,30 +1259,34 @@ function initDocuments() {
   const container = document.getElementById('documents-grid');
   if (!container) return;
 
-  function getDocumentIcon(type) {
-    if (type === 'image') {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>`;
-    }
-    if (type === 'link') {
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-              </svg>`;
-    }
-    // Default PDF icon
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10 9 9 9 8 9"/>
-            </svg>`;
-  }
+  container.innerHTML = `
+    <div class="documents-coming-soon-card reveal">
+      <div class="docs-soon-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="12" y1="18" x2="12" y2="12"></line>
+          <polyline points="9 15 12 12 15 15"></polyline>
+        </svg>
+      </div>
+      <div class="docs-soon-badge">Coming Soon</div>
+      <h3 class="docs-soon-title">Documents Uploading Soon</h3>
+      <p class="docs-soon-desc">
+        Verified academic transcripts, NPTEL IIT certifications, and technical credentials are being scanned and prepared for public viewing. Check back shortly or request credentials directly.
+      </p>
+      <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+        <a href="#contact" class="btn btn-primary" style="padding:0.6rem 1.4rem;font-size:0.88rem;">
+          <span>Request via Contact</span>
+        </a>
+        <a href="personal-message.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.6rem 1.4rem;font-size:0.88rem;">
+          <span>Send Personal Inquiry</span>
+        </a>
+      </div>
+    </div>
+  `;
+  return;
 
+  // Legacy config retained for reference
   container.innerHTML = documentsConfig.map(doc => {
     const downloadHtml = doc.download
       ? `<a href="${doc.url}" download="${doc.downloadFilename || ''}"
