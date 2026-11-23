@@ -2602,27 +2602,31 @@ html[data-active-mode="recruiter"] .mobile-theme-wrapper,
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.65rem 0.85rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(251, 191, 36, 0.4);
     border-radius: 12px;
     width: 100%;
     color: var(--text-primary);
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-size: 0.92rem;
+    font-weight: 700;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   }
 
   [data-theme="light"] .mobile-theme-btn {
-    background: #f8fafc;
-    border-color: #e2e8f0;
+    background: #ffffff;
+    border-color: rgba(217, 119, 6, 0.5);
+    color: #0f172a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .mobile-theme-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(251, 191, 36, 0.15);
     border-color: #fbbf24;
+    transform: translateY(-1px);
   }
 
   .theme-icon-container {

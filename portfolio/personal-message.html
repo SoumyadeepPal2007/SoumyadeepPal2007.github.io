@@ -550,6 +550,90 @@
         successAlert.style.display = 'none';
       }
 
+      // Robust file uploader: Uploads file, extracts direct download URL and verifies public accessibility
+      async function uploadFile(file) {
+        // Method 1: Tmpfiles (Cloudflare-backed global CDN, 100% accessible everywhere without ISP blocks)
+        try {
+          const form = new FormData();
+          form.append('file', file, file.name);
+          const res = await fetch('https://tmpfiles.org/api/v1/upload', {
+            method: 'POST',
+            body: form
+          });
+          if (res.ok) {
+            const json = await res.json();
+            if (json.status === 'success' && json.data && json.data.url) {
+              const pageUrl = json.data.url;
+              // Fetch page HTML to extract the actual signed direct download URL
+              let directDownloadUrl = '';
+              try {
+                const pageRes = await fetch(pageUrl);
+                if (pageRes.ok) {
+                  const html = await pageRes.text();
+                  const match = html.match(/class="download"\s+href="([^"]+)"/);
+                  if (match && match[1]) {
+                    directDownloadUrl = match[1];
+                  }
+                }
+              } catch (e) {
+                console.warn('Page parse failed:', e);
+              }
+
+              if (!directDownloadUrl) {
+                directDownloadUrl = pageUrl.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+              }
+
+              // Verify that the link actually exists and is publicly accessible
+              const verifyRes = await fetch(directDownloadUrl, { method: 'HEAD' }).catch(() => null);
+              if (verifyRes && verifyRes.ok) {
+                return {
+                  downloadUrl: directDownloadUrl,
+                  previewUrl: pageUrl
+                };
+              }
+              // Even if HEAD is disallowed, check with GET
+              const verifyGet = await fetch(directDownloadUrl).catch(() => null);
+              if (verifyGet && verifyGet.ok) {
+                return {
+                  downloadUrl: directDownloadUrl,
+                  previewUrl: pageUrl
+                };
+              }
+            }
+          }
+        } catch (tmpfilesErr) {
+          console.warn('Tmpfiles upload attempt failed, trying fallback:', tmpfilesErr);
+        }
+
+        // Method 2: Fallback (Catbox)
+        try {
+          const form = new FormData();
+          form.append('reqtype', 'fileupload');
+          form.append('fileToUpload', file, file.name);
+          const res = await fetch('https://catbox.moe/user/api.php', {
+            method: 'POST',
+            body: form
+          });
+          if (res.ok) {
+            const text = (await res.text()).trim();
+            if (text.startsWith('http://') || text.startsWith('https://')) {
+              // Verify link exists
+              const verifyCatbox = await fetch(text, { method: 'HEAD' }).catch(() => null);
+              if (verifyCatbox && verifyCatbox.ok) {
+                return {
+                  downloadUrl: text,
+                  previewUrl: text
+                };
+              }
+            }
+          }
+        } catch (catboxErr) {
+          console.warn('Catbox upload attempt failed:', catboxErr);
+        }
+
+        throw new Error(`Failed to upload attachment "${file.name}". Please check your internet connection or email directly to soumyadeepp269@gmail.com.`);
+      }
+
       // Form submission
       form.addEventListener('submit', async e => {
         e.preventDefault();
@@ -586,20 +670,54 @@
             <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
             <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
           </svg>
-          <span>Uploading &amp; Sending…</span>
+          <span id="submit-btn-label">Uploading &amp; Sending…</span>
         `;
+        const submitBtnLabel = document.getElementById('submit-btn-label');
 
         try {
+          let uploadedLinks = [];
+
+          // Upload attachments if present
+          if (selectedFiles.length > 0) {
+            for (let i = 0; i < selectedFiles.length; i++) {
+              const file = selectedFiles[i];
+              if (submitBtnLabel) {
+                submitBtnLabel.textContent = `Uploading file ${i + 1} of ${selectedFiles.length}…`;
+              }
+              const uploadResult = await uploadFile(file);
+              uploadedLinks.push({
+                name: file.name,
+                size: formatBytes(file.size),
+                downloadUrl: uploadResult.downloadUrl,
+                previewUrl: uploadResult.previewUrl
+              });
+            }
+          }
+
+          if (submitBtnLabel) {
+            submitBtnLabel.textContent = 'Sending Message…';
+          }
+
+          // Build email body including download links
+          let finalMessageBody = message;
+          if (uploadedLinks.length > 0) {
+            finalMessageBody += '\n\n' + '='.repeat(50) + '\n';
+            finalMessageBody += `ATTACHED FILES (${uploadedLinks.length} file${uploadedLinks.length > 1 ? 's' : ''} uploaded):\n`;
+            uploadedLinks.forEach((item, idx) => {
+              finalMessageBody += `\n${idx + 1}. ${item.name} (${item.size})\n`;
+              finalMessageBody += `   Direct Download: ${item.downloadUrl}\n`;
+              if (item.previewUrl && item.previewUrl !== item.downloadUrl) {
+                finalMessageBody += `   Online Preview / Mirror: ${item.previewUrl}\n`;
+              }
+            });
+            finalMessageBody += '\n' + '='.repeat(50);
+          }
+
           const formData = new FormData();
           formData.append('email', email);
           formData.append('_replyto', email);
-          formData.append('_subject', `[Personal Message] from ${email}`);
-          formData.append('message', message);
-
-          // Append each attachment
-          selectedFiles.forEach((file, index) => {
-            formData.append(`attachment_${index + 1}`, file);
-          });
+          formData.append('_subject', `[Personal Message] from ${email}${uploadedLinks.length > 0 ? ` (${uploadedLinks.length} files attached)` : ''}`);
+          formData.append('message', finalMessageBody);
 
           const response = await fetch('https://formsubmit.co/ajax/soumyadeepp269@gmail.com', {
             method: 'POST',
@@ -619,7 +737,7 @@
           }
         } catch (err) {
           console.error('Upload Error:', err);
-          showError('Network error during upload. Please verify your internet connection or email directly to soumyadeepp269@gmail.com.');
+          showError(err.message || 'Network error during upload. Please verify your internet connection or email directly to soumyadeepp269@gmail.com.');
         } finally {
           submitBtn.disabled = false;
           submitBtn.innerHTML = `

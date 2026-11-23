@@ -62,9 +62,33 @@
           <a href="#contact" class="nav-link">Contact</a>
         </div>
 
-        <!-- Mobile-Only Drawer Controls (Vertical Modes & Theme Toggle inside hamburger menu) -->
+        <!-- Mobile-Only Drawer Controls (Theme Toggle & Vertical Modes inside hamburger menu) -->
         <div class="mobile-menu-controls">
           <div class="mobile-menu-divider"></div>
+
+          <!-- Prominent Mobile Theme Toggle at the top of menu options -->
+          <div class="mobile-menu-section mobile-theme-wrapper">
+            <span class="mobile-menu-label">Appearance</span>
+            <button type="button" class="mobile-theme-btn" id="mobile-theme-toggle-btn" aria-label="Toggle dark/light theme">
+              <div class="theme-icon-container">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </div>
+              <span class="mobile-theme-text" id="mobile-theme-text">Toggle Theme (Dark / Light)</span>
+            </button>
+          </div>
           
           <div class="mobile-menu-section">
             <span class="mobile-menu-label">Portfolio Mode</span>
@@ -91,29 +115,6 @@
                 </div>
               </button>
             </div>
-          </div>
-
-          <div class="mobile-menu-section mobile-theme-wrapper">
-            <span class="mobile-menu-label">Appearance</span>
-            <button type="button" class="mobile-theme-btn" id="mobile-theme-toggle-btn" aria-label="Toggle dark/light theme">
-              <div class="theme-icon-container">
-                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="5"></circle>
-                  <line x1="12" y1="1" x2="12" y2="3"></line>
-                  <line x1="12" y1="21" x2="12" y2="23"></line>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                  <line x1="1" y1="12" x2="3" y2="12"></line>
-                  <line x1="21" y1="12" x2="23" y2="12"></line>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-              </div>
-              <span class="mobile-theme-text" id="mobile-theme-text">Toggle Theme (Dark / Light)</span>
-            </button>
           </div>
         </div>
       </nav>
